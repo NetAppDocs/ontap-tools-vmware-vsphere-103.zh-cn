@@ -1,0 +1,31 @@
+---
+permalink: protect/verify-the-replicated-storage-environment.html 
+sidebar: sidebar 
+keywords:  
+summary: '在配置Storage Replication Adapter \(SRA\)后、您应验证受保护站点和恢复站点是否已成功配对。受保护站点和恢复站点均应可发现复制的存储系统。' 
+---
+= 验证复制的存储系统
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在配置Storage Replication Adapter (SRA)后、您应验证受保护站点和恢复站点是否已成功配对。受保护站点和恢复站点均应可发现复制的存储系统。
+
+* 开始之前 *
+
+* 您应已配置存储系统。
+* 您应已使用VMware Live Site Recovery阵列管理器将受保护站点和恢复站点配对。
+* 在对SRA执行测试故障转移操作和故障转移操作之前、您应已启用FlexClone许可证和SnapMirror许可证。
+* 源站点和目标站点应具有相同的SnapMirror策略和计划。
+
+
+.步骤
+. 登录到 vCenter Server 。
+. 导航到 * 站点恢复 * > * 基于阵列的复制 * 。
+. 选择所需的阵列对并验证相应的详细信息。
++
+应在受保护站点和恢复站点发现状态为"`已启用`"的存储系统。
+
+

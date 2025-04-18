@@ -1,0 +1,60 @@
+---
+permalink: configure/add-storage-backend.html 
+sidebar: sidebar 
+keywords:  
+summary: 存储后端是ESXi主机用于数据存储的系统。 
+---
+= 添加存储后端
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过添加存储后端、您可以加入ONTAP集群。
+
+* 关于此任务 *
+
+要在多租户架构中向全局范围的集群添加存储后端、请使用ONTAP工具管理器添加存储后端。将存储后端添加到全局集群后、您必须将此集群与所需的vCenter租户相关联。vCenter租户必须载入所需的Storage Virtual Machine (SVM)。这样、SVM用户便可配置Vvol数据存储库。您可以使用SVM在vCenter中添加存储。
+
+要将存储后端添加到本地范围的集群、请直接使用vCenter Server上的ONTAP工具插件添加ONTAP系统。
+
+[role="tabbed-block"]
+====
+.使用ONTAP工具管理器
+--
+
+NOTE: 在多租户设置中、您可以全局添加存储后端集群、并在本地添加SVM以使用SVM用户凭据。
+
+.步骤
+. 从Web浏览器启动ONTAP工具管理器： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期间提供的适用于VMware vSphere的ONTAP工具管理员凭据登录。
+. 从边栏中选择*存储后端*。
+. 添加存储后端并提供服务器IP地址或FQDN、用户名和密码详细信息。
++
+
+NOTE: 支持IPv4和IPv6地址管理生命周期。
+
+
+
+--
+.使用vSphere客户端用户界面
+--
+
+NOTE: 使用vSphere客户端用户界面添加存储后端时、Vvol数据存储库不支持直接添加SVM用户。
+
+. 登录到vSphere Client
+. 在快捷方式页面中，选择插件部分下的NetApp ONTAP tools*。
+. 从边栏中选择*存储后端*。
+. 添加存储后端并提供服务器IP地址、用户名、密码和端口详细信息。
++
+
+NOTE: 要直接添加SVM用户、您可以添加基于集群的凭据以及IPv4和IPv6地址管理LIF、或者通过SVM管理LIF提供基于SVM的凭据。
+
+
+
+.下一步是什么？
+此时、此列表将刷新、您可以在此列表中看到新添加的存储后端。
+
+--
+====

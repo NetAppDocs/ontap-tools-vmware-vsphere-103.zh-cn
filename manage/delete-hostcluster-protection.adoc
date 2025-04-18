@@ -1,0 +1,22 @@
+---
+permalink: manage/delete-hostcluster-protection.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: 删除主机集群保护后、数据存储库将不受保护。 
+---
+= 删除主机集群保护
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+删除主机集群保护后、数据存储库将不受保护。
+
+.步骤
+. 要查看受保护的主机集群，请导航到*Host tools*>*Protectation*>* NetApp ONTAP cluster几何关系*。
++
+在此页面中、您可以监控受保护主机集群及其保护状态、SnapMirror关系及其对应的SnapMirror状态。
+
+. 在*主机集群保护*窗口中，选择集群对应的省略号菜单，然后选择*删除保护*。
+

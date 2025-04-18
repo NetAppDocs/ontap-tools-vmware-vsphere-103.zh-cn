@@ -1,0 +1,31 @@
+---
+permalink: manage/enable-services.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用ONTAP工具管理器更改管理员密码。 
+---
+= 为VMware vSphere服务启用ONTAP工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+管理器、用于使用ONTAP工具管理器启用VASA Provider、导入VVOLS配置和灾难恢复(SRA)等服务。
+
+.步骤
+. 从Web浏览器启动ONTAP工具管理器： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期间提供的适用于VMware vSphere的ONTAP工具管理员凭据登录。
+. 在概述部分中选择*编辑设备设置*。
+. 在*服务*部分中，您可以根据需要启用VASA Provider、导入VVOLs配置和灾难恢复(SRA)等可选服务。
++
+首次启用服务时、您必须创建VASA Provider和SRA凭据。这些命令用于在vCenter Server上注册或启用VASA Provider和SRA服务。
+
++
+
+NOTE: 在禁用任何可选服务之前、请确保由ONTAP工具管理的vCenter Server未使用这些服务。
+
++
+只有在启用VASA Provider服务后、才会显示*允许导入vvol配置*选项。通过此选项、可以将ONTAP工具9.x中的数据迁移到ONTAP工具10.3。
+
+

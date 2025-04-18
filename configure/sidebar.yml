@@ -1,0 +1,22 @@
+---
+section: configure
+title: 为 VMware vSphere 配置 ONTAP 工具
+entries:
+- title: 添加vCenter Server实例
+  url: "/configure/add-vcenter.html"
+- title: 将VASA Provider注册到vCenter Server
+  url: "/configure/registration-process.html"
+- title: 安装 NFS VAAI 插件
+  url: "/configure/install-nfs-vaai-plug-in.html"
+- title: 配置ESXi主机设置
+  url: "/configure/configure-esx-server-multipath-and-timeout-settings.html"
+- title: 配置ONTAP用户角色和权限
+  url: "/configure/configure-user-role-and-privileges.html"
+- title: 添加存储后端
+  url: "/configure/add-storage-backend.html"
+- title: 将存储后端与vCenter Server实例相关联
+  url: "/configure/associate-storage-backend.html"
+- title: 配置网络访问
+  url: "/configure/configure-network-access.html"
+- title: 创建数据存储库
+  url: "/configure/create-datastore.html"

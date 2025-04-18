@@ -1,0 +1,35 @@
+---
+permalink: manage/edit-esxi-host-settings.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用适用于 VMware vSphere 的 ONTAP 工具信息板编辑 ESXi 主机设置。 
+---
+= 使用 ONTAP 工具修改 ESXi 主机设置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用适用于 VMware vSphere 的 ONTAP 工具信息板编辑 ESXi 主机设置。
+
+.开始之前
+如果存在具有ESXi主机设置的问题描述、则此问题描述将显示在信息板的ESXi主机系统portlet中。您可以选择此问题来查看存在此问题的ESXi主机的主机名或IP地址。
+
+.步骤
+. 登录到vSphere Client
+. 在快捷方式页面中，选择插件部分下的NetApp ONTAP tools*。
+. 转到适用于VMware vSphere的ONTAP工具插件概述(信息板)中的*ESXi主机合规性* portlet。
+. 选择*应用建议设置*链接。
+. 在*应用建议的主机设置*窗口中，选择要符合NetApp建议的主机设置的主机，然后选择*下一步*。
++
+
+NOTE: 您可以展开ESXi主机以查看当前值。
+
+. 在设置页面中、根据需要选择建议值。
+. 在摘要窗格中，检查这些值并选择*Complet*。您可以在最近任务面板中跟踪进度。
+
+
+* 相关信息 *
+
+link:../configure/configure-esx-server-multipath-and-timeout-settings.html["配置ESXi主机设置"]

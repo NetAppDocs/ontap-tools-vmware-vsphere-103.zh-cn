@@ -1,0 +1,97 @@
+---
+permalink: deploy/quick-start.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: 开始使用适用于VMware vSphere的ONTAP工具包括几个步骤。 
+---
+= 适用于VMware vSphere的ONTAP工具快速入门
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+开始使用适用于VMware vSphere的ONTAP工具包括几个步骤。此快速入门将指导您完成适用于VMware vSphere的ONTAP工具的初始设置。
+
+最初、您将以小型单节点配置的形式部署适用于VMware vSphere的ONTAP工具、该配置可提供核心服务来支持NFS和VMFS数据存储库。如果您需要扩展配置以使用vols数据存储库和高可用性(HA)、请在完成此工作流后执行此操作。有关详细信息，请参阅link:../deploy/ha-workflow.html["HA部署工作流"]。
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["一个"]规划部署
+[role="quick-margin-para"]
+验证vSphere、ONTAP和ESXi主机版本是否与ONTAP工具版本兼容。分配足够的CPU、内存和磁盘空间。根据您的安全策略、您可能需要配置防火墙或其他安全设备以允许网络流量。
+
+[role="quick-margin-para"]
+确保vCenter Server已安装且可访问。
+
+[role="quick-margin-list"]
+* https://imt.netapp.com/matrix/#welcome["互操作性表工具"]
+* link:../deploy/prerequisites.html["部署适用于VMware vSphere的ONTAP工具的前提条件"]
+* link:../deploy/pre-deploy-checks.html["开始之前"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["两个"]部署适用于VMware vSphere的ONTAP工具
+[role="quick-margin-para"]
+最初、您将以小型单节点配置的形式部署适用于VMware vSphere的ONTAP工具、该配置可提供核心服务来支持NFS和VMFS数据存储库。如果您计划扩展配置以使用vols数据存储库和高可用性(HA)、请在完成此工作流后执行此操作。要成功扩展到HA配置、必须确保已启用CPU热添加和内存热插拔选项。
+
+[role="quick-margin-list"]
+* link:../deploy/ontap-tools-deployment.html["部署适用于VMware vSphere的ONTAP工具"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["三个"]添加vCenter Server实例
+[role="quick-margin-para"]
+将一个或多个vCenter Server实例添加到适用于VMware vSphere的ONTAP工具中、以配置、管理和保护vCenter Server环境中的虚拟数据存储库。
+
+[role="quick-margin-list"]
+* link:../configure/add-vcenter.html["添加vCenter Server实例"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["四个"]配置ONTAP用户角色和Privileges
+[role="quick-margin-para"]
+使用适用于VMware vSphere的ONTAP工具提供的JSON文件配置新用户角色和Privileges以管理存储后端。
+
+[role="quick-margin-list"]
+* link:../configure/configure-user-role-and-privileges.html["配置ONTAP用户角色和权限"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["五个"]配置存储后端
+[role="quick-margin-para"]
+将存储后端添加到ONTAP集群。对于vCenter充当关联SVM的租户的多租户设置、请使用ONTAP工具管理器添加集群。将存储后端与vCenter Server相关联、以便将其全局映射到已登录的vCenter Server实例。
+
+[role="quick-margin-para"]
+使用ONTAP工具用户界面使用集群或SVM凭据添加本地存储后端。这些存储后端仅限于一个vCenter。在本地使用集群凭据时、关联的SVM会自动映射到vCenter以管理Vvol或VMFS。对于VMFS管理(包括SRA)、ONTAP工具支持SVM凭据、而不需要全局集群。
+
+[role="quick-margin-list"]
+* link:../configure/add-storage-backend.html["添加存储后端"]
+* link:../configure/associate-storage-backend.html["将存储后端与vCenter Server实例相关联"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["六个"]如果您正在使用多个vCenter Server、请升级证书
+[role="quick-margin-para"]
+使用多个vCenter Server时、请将自签名证书升级为证书颁发机构(CA)签名的证书。
+
+[role="quick-margin-list"]
+* link:../manage/certificate-manage.html["管理证书"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["七个"](可选)启用SRA保护
+[role="quick-margin-para"]
+启用SRA功能以配置灾难恢复并保护NFS或VMFS数据存储库。
+
+[role="quick-margin-list"]
+* link:../protect/configure-on-srm-appliance.html["在VMware Live Site Recovery设备上配置SRA"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["八个"](可选)启用SnapMirror主动同步保护
+[role="quick-margin-para"]
+配置适用于VMware vSphere的ONTAP工具、以管理SnapMirror活动同步的主机集群保护。将源集群和目标集群与SVM配对以实现SnapMirror活动同步。这仅适用于VMFS数据存储库。
+
+[role="quick-margin-list"]
+* link:../configure/protect-cluster.html["使用主机集群保护进行保护"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-9.png["九"]为适用于VMware vSphere的ONTAP工具部署设置备份和恢复
+[role="quick-margin-para"]
+计划对适用于VMware vSphere的ONTAP工具设置进行备份、以便在发生故障时恢复设置。
+
+[role="quick-margin-list"]
+* link:../manage/enable-backup.html["创建备份并恢复ONTAP工具设置"]
+

@@ -1,0 +1,16 @@
+---
+section: deploy
+title: 部署适用于VMware vSphere的ONTAP工具
+entries:
+- title: 适用于VMware vSphere的ONTAP工具快速入门
+  url: "/deploy/quick-start.html"
+- title: 高可用性(HA)部署工作流
+  url: "/deploy/ha-workflow.html"
+- title: 前提条件
+  url: "/deploy/prerequisites.html"
+- title: 开始之前
+  url: "/deploy/pre-deploy-checks.html"
+- title: 部署适用于VMware vSphere的ONTAP工具
+  url: "/deploy/ontap-tools-deployment.html"
+- title: 部署错误代码
+  url: "/deploy/deployment-error-codes.html"

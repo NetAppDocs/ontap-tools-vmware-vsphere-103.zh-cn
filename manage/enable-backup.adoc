@@ -1,0 +1,74 @@
+---
+permalink: manage/enable-backup.html 
+sidebar: sidebar 
+keywords:  
+summary: 由于适用于VMware vSphere 10.3的ONTAP工具使用动态存储配置程序、因此无法实现零RPO。但是、您可以实现近乎为零的RPO。 
+---
+= 创建备份并恢复设置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+由于适用于VMware vSphere 10.3的ONTAP工具使用动态存储配置程序、因此无法实现零RPO。但是、您可以实现近乎为零的RPO。要实现近乎为零的RPO、您需要创建设置备份并在新虚拟机上还原。
+
+
+
+== 创建备份并下载备份文件
+
+.步骤
+. 从vCenter Server中、打开维护控制台。
+. 以维护用户身份登录。
+. 输入 `4`以选择*Support and Diagnostic*。
+. 输入 `3`以选择*启用系统备份*选项。
+. 对于非HA、请输入部署ONTAP Tools虚拟机的vCenter凭据。
+. 输入介于5-60分钟之间的备份频率值。
+. 按*Enter*键
++
+这样会定期创建备份并将备份推送到虚拟机的数据存储库。
+
+. 要访问备份、请导航到存储部分、然后选择虚拟机的数据存储库
+. 选择*Files*部分。
++
+在文件部分中、您可以看到目录。目录名称为ONTAP工具IP地址、其中点(.)替换为下划线、后缀为_backup_。
+
+. 有关备份的更多信息，请从*Files*>*Download*下载backup_info.txt文件。
+
+
+
+
+== 恢复
+
+要恢复设置、请关闭现有虚拟机、然后使用初始部署中使用的OVA部署新虚拟机。
+
+新虚拟机需要使用相同的ONTAP工具IP地址(负载平衡器IP)、并且系统配置(例如已启用的服务、节点大小和HA模式)必须与初始部署相同。
+
+执行以下步骤从备份文件恢复设置。
+
+. 从vCenter Server中、打开维护控制台。
+. 以维护用户身份登录。
+. 输入 `4`以选择*Support and Diagnostic*。
+. 输入 `2`以选择*Enable remote diagnostic access*选项并为诊断访问创建新密码。
+. 从下载的目录中选择任何一个备份。最新的备份文件名记录在_backup_info.txt文件中。
+. 运行以下命令、将备份复制到新虚拟机、并在出现提示时输入诊断密码。
++
+[listing]
+----
+scp <Backup_X.tar.enc> diag@<node_ip>:/home/diag/system_recovery.tar.enc
+----
++
+
+NOTE: 请勿更改命令中提及的目标路径和文件名(/HOME/diag/system_recovery．tar.enc)。
+
+. 复制备份文件后、登录到诊断Shell并运行以下命令：
++
+[listing]
+----
+sudo perl /home/maint/scripts/post-deploy-upgrade.pl -recovery
+----
++
+日志记录在_/var/log/post-deep-upgrade．log_文件中。
+
+. 成功恢复后、服务和vCenter对象将还原。
+

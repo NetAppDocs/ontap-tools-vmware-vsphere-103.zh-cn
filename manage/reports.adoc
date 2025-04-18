@@ -1,0 +1,20 @@
+---
+permalink: manage/reports.html 
+sidebar: sidebar 
+keywords:  
+summary: 适用于VMware vSphere插件的ONTAP工具可为虚拟机和数据存储库提供报告。 
+---
+= ONTAP工具报告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+适用于VMware vSphere插件的ONTAP工具可为虚拟机和数据存储库提供报告。在vCenter Client的快捷方式部分中选择适用于VMware vSphere的NetApp ONTAP工具插件图标后、此用户界面将导航到概述页面。选择"Reports"(报告)选项卡以查看虚拟机和数据存储库报告。
+
+虚拟机报告显示已发现虚拟机(应至少有一个磁盘来自基于ONTAP存储的数据存储库)的列表以及性能指标。展开VM记录时、将显示所有与磁盘相关的数据存储库信息。
+
+"数据存储库"报告显示了从所有类型的ONTAP存储后端配置的适用于VMware vSphere管理的数据存储库的已发现或已识别ONTAP工具列表以及性能指标。
+
+您可以使用"管理列"选项隐藏或显示不同的列。

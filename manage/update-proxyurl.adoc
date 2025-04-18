@@ -1,0 +1,22 @@
+---
+permalink: manage/update-proxyurl.html 
+sidebar: sidebar 
+keywords:  
+summary: '您可以使用适用于VMware vSphere的ONTAP工具图形用户界面(GUI\)中提供的选项收集适用于VMware vSphere的ONTAP工具的日志文件。技术支持可能会要求您收集日志文件以帮助解决问题。' 
+---
+= 更新AutoSupport代理URL
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+更新AutoSupport代理URL以确保在使用代理服务器进行网络访问控制或采取安全措施的情况下AutoSupport功能正常运行。它允许AutoSupport数据通过相应的代理进行路由、从而实现安全传输和合规性。
+
+.步骤
+. 从vCenter Server中、打开维护控制台。
+. 以维护用户身份登录。
+. 输入1选择*应用程序配置*。
+. 输入4选择*更新AutoSupport代理URL*。
+. 输入代理URL。
+

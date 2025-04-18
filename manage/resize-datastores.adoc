@@ -1,0 +1,25 @@
+---
+permalink: manage/resize-datastores.html 
+sidebar: sidebar 
+keywords:  
+summary: 通过调整数据存储库大小、可以增加虚拟机文件的存储。您可以根据基础架构要求的变化更改数据存储库的大小。 
+---
+= 调整NFS和VMFS数据存储库的大小
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过调整数据存储库大小、可以增加虚拟机文件的存储。您可以根据基础架构要求的变化更改数据存储库的大小。
+
+* 关于此任务 *
+
+您只能增加NFS和VMFS数据存储库的大小。NFS和VMFS数据存储库中的FlexVol卷不能缩减到低于现有大小、但可以增长120%。
+
+.步骤
+. 在vSphere Client主页中、选择*主机和集群*。
+. 在导航窗格中、选择包含数据存储库的数据中心。
+. 右键单击NFS或VMFS数据存储库，然后选择*NFS NetApp ONTAP tools*>*Resize DataDataStore。
+. 在调整大小对话框中，指定数据存储库的新大小，然后选择*OK*。
+

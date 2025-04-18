@@ -1,0 +1,136 @@
+---
+permalink: deploy/pre-deploy-checks.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部署软件包的空间要求以及一些基本主机系统要求。 
+---
+= 开始之前…​
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在继续部署之前、请确保满足以下要求：
+
+|===
+| 要求 | 您的状态 
+
+
+| vSphere版本、ONTAP版本和ESXi主机版本与ONTAP工具版本兼容。 | ❏是❏否 
+
+
+| 已设置并配置vCenter Server环境 | ❏是❏否 
+
+
+| 已删除浏览器缓存 | ❏是❏否 
+
+
+| 您具有父vCenter Server凭据 | ❏是❏否 
+
+
+| 您拥有vCenter Server实例的登录凭据、适用于VMware vSphere的ONTAP工具将在部署后连接到该实例以进行注册 | ❏是❏否 
+
+
+| 在多vCenter部署中、颁发证书的域名会映射到虚拟IP地址、在该部署中、自定义CA证书是必需的。 | ❏是❏否 
+
+
+| 您已对域名运行nslookup检查、以检查域是否已解析为预期的IP地址。 | ❏是❏否 
+
+
+| 此时将使用域名和ONTAP工具IP地址创建证书。 | ❏是❏否 
+
+
+| 可从vCenter Server访问ONTAP工具应用程序和内部服务。 | ❏是❏否 
+
+
+| 使用多租户SVM时、每个SVM上都有一个SVM管理LIF。 | ❏是❏否 
+|===
+
+
+== 部署工作表
+
+
+
+=== 适用于单节点部署
+
+使用以下工作表收集适用于VMware vSphere的ONTAP工具初始部署所需的信息：适用于适用于VMware vSphere的ONTAP工具初始部署：
+
+|===
+| 要求 | 您的价值 
+
+
+| ONTAP工具应用程序的IP地址 |  
+
+
+| 用于节点间通信的节点互连IP地址 |  
+
+
+| 第一个节点的DNS主机名 |  
+
+
+| 主 DNS 服务器 |  
+
+
+| 二级 DNS 服务器 |  
+
+
+| DNS搜索域 |  
+
+
+| 主节点的IPv4地址 |  
+
+
+| IPv4地址的子网掩码 |  
+
+
+| IPv4地址的默认网关 |  
+
+
+| IPv6地址(可选) |  
+
+
+| IPv6前缀长度(可选) |  
+
+
+| IPv6地址的网关(可选) |  
+|===
+为上述所有IP地址创建DNS记录。在分配主机名之前、请将其映射到DNS上的可用IP地址。所有IP地址都应位于为部署选择的同一个VLAN上。
+
+
+
+=== 适用于高可用性(HA)部署
+
+除了单节点部署要求之外、您还需要HA部署的以下信息：
+
+|===
+
+
+| 要求 | 您的价值 
+
+
+| 主 DNS 服务器 |  
+
+
+| 二级 DNS 服务器 |  
+
+
+| DNS搜索域 |  
+
+
+| 第二个节点的DNS主机名 |  
+
+
+| 第二个节点的IP地址 |  
+
+
+| 第三个节点的DNS主机名 |  
+
+
+| 第三个节点的IP地址 |  
+|===
+
+
+== 网络防火墙配置
+
+在网络防火墙中打开IP地址所需的端口。ONTAP工具必须能够通过端口443访问此LIF。有关最新更新、请参见link:../deploy/prerequisites.html["端口要求"]。

@@ -1,0 +1,127 @@
+---
+permalink: manage/edit-hostcluster-protection.html 
+sidebar: sidebar 
+keywords: vVols datastore,delete vVol 
+summary: 您可以编辑受保护主机集群的SnapMirror关系。您可以添加、修改和删除这些关系。但是、您不能编辑一致性组名称。 
+---
+= 修改受保护的主机集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在修改保护过程中、您可以执行以下任务。您可以在同一工作流中执行所有更改。
+
+* 向受保护集群添加新的数据存储库或主机。
+* 将新的SnapMirror关系添加到保护设置。
+* 从保护设置中删除现有SnapMirror关系。
+* 修改现有SnapMirror关系。
+
+
+
+
+== 监控主机集群保护
+
+使用此过程可监控主机集群保护的状态。您可以监控每个受保护主机集群及其保护状态、SnapMirror关系、数据存储库以及相应的SnapMirror状态。
+
+.步骤
+. 登录到vSphere Client
+. 导航到* NetApp ONTAP tools*>*保护*>*主机集群关系*。
++
+保护列下的图标显示保护状态
+
+. 将鼠标悬停在图标上可查看更多详细信息。
+
+
+
+
+== 添加新数据存储库或主机
+
+使用此过程可保护新添加的数据存储库或主机。您可以使用vCenter本机用户界面向受保护集群添加新主机或在主机集群上创建新数据存储库。
+
+.步骤
+. 登录到vSphere Client
+. 要编辑受保护集群的属性、您可以执行以下任一操作
++
+.. 导航到*Host tools*>*Protection *>* NetApp ONTAP cluster elations*，选择该集群对应的省略号菜单，然后选择*Edit*或
+.. 右键单击某个主机群集，然后选择*Protect NetApp ONTAP tools*>*Protect Cluster*。
+
+
+. 如果已在vCenter本机用户界面中创建数据存储库、则该数据存储库将显示为未受保护。用户界面会在一个对话框中显示集群中的所有数据存储库及其保护状态。选择“*保护*”按钮以启用完全保护。
+. 如果添加了新的ESXi主机、则保护状态将显示为已部分保护。选择SnapMirror设置下的省略号菜单，然后选择*Edit*以设置新添加的ESXi主机的接近度。
++
+
+NOTE: 对于异步类型的关系、不支持编辑操作、因为您不能将三级站点的目标SVM添加到同一个ONTAP工具实例。但是、您可以使用目标SVM的系统管理器或命令行界面来更改关系配置。
+
+. 进行必要的更改后，选择*保存*。
+. 您可以在*Protect Cluster*窗口中看到所做的更改。
+
+
+此时将创建一个vCenter任务、您可以在*最近任务*面板中跟踪进度。
+
+
+
+== 添加新的SnapMirror关系
+
+.步骤
+. 登录到vSphere Client
+. 要编辑受保护集群的属性、您可以执行以下任一操作
++
+.. 导航到*Host tools*>*Protection *>* NetApp ONTAP cluster elations*，选择该集群对应的省略号菜单，然后选择*Edit*或
+.. 右键单击某个主机群集，然后选择*Protect NetApp ONTAP tools*>*Protect Cluster*。
+
+
+. 选择*添加关系*。
+. 将新关系添加为*异 步*或*AutomatedFailOverDw双 工*策略类型。
+. 选择*保护*。
++
+您可以在*Protect Cluster*窗口中看到所做的更改。
+
+
+
+此时将创建一个vCenter任务、您可以在*最近任务*面板中跟踪进度。
+
+
+
+== 删除现有SnapMirror关系
+
+要删除异步SnapMirror关系、应在适用于VMware vSphere的ONTAP工具上将二级站点SVM或集群添加为存储后端。您无法删除所有SnapMirror关系。删除关系时、ONTAP集群上的相应关系也会被删除。删除自动故障转移双工SnapMirror关系时、目标上的数据存储库将取消映射、一致性组、LUN、卷和igroups将从目标ONTAP集群中删除。
+
+删除此关系将在二级站点上触发重新扫描、以从主机中删除未映射的LUN作为活动路径。
+
+.步骤
+. 登录到vSphere Client
+. 要编辑受保护集群的属性、您可以执行以下任一操作
++
+.. 导航到*Host tools*>*Protection *>* NetApp ONTAP cluster elations*，选择该集群对应的省略号菜单，然后选择*Edit*或
+.. 右键单击某个主机群集，然后选择*Protect NetApp ONTAP tools*>*Protect Cluster*。
+
+
+. 选择SnapMirror设置下的省略号菜单，然后选择*Delete*。
+
+
+此时将创建一个vCenter任务、您可以在*最近任务*面板中跟踪进度。
+
+
+
+== 修改现有SnapMirror关系
+
+要修改异步SnapMirror关系、应在适用于VMware vSphere的ONTAP工具上将二级站点SVM或集群添加为存储后端。如果是AutomatedFailOver双 工SnapMirror关系、则在配置一致的情况下、您可以修改主机邻近度；在配置不一致的情况下、您可以修改主机访问。您不能互换异步和自动故障覆盖双工策略类型。您可以为集群上新发现的主机设置接近或访问权限。
+
+
+NOTE: 您不能编辑现有异步SnapMirror关系。
+
+.步骤
+. 登录到vSphere Client
+. 要编辑受保护集群的属性、您可以执行以下任一操作
++
+.. 导航到*Host tools*>*Protection *>* NetApp ONTAP cluster elations*，选择该集群对应的省略号菜单，然后选择*Edit*或
+.. 右键单击某个主机群集，然后选择*Protect NetApp ONTAP tools*>*Protect Cluster*。
+
+
+. 如果选择了AutomatedFailOver双 工策略类型、请添加主机邻近度或主机访问详细信息。
+. 选择“*保护*”按钮。
+
+
+此时将创建一个vCenter任务、您可以在*最近任务*面板中跟踪进度。

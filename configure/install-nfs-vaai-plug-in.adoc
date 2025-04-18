@@ -1,0 +1,57 @@
+---
+permalink: configure/install-nfs-vaai-plug-in.html 
+sidebar: sidebar 
+keywords:  
+summary: '您可以使用适用于VMware vSphere的NetApp工具安装适用于VMware vStorage APIS for Array Integration \(VAAI\)的ONTAP NFS插件。' 
+---
+= 安装 NFS VAAI 插件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NFS vStorage API for Array Integration (NFS VAAI)插件是一个软件组件、用于集成VMware vSphere和NFS存储阵列。使用适用于VMware vSphere的ONTAP工具安装NFS VAAI插件、以利用NFS存储阵列的高级功能将某些与存储相关的操作从ESXi主机卸载到存储阵列本身。
+
+.开始之前
+* 下载 https://mysupport.netapp.com/site/products/all/details/nfsplugin-vmware-vaai/downloads-tab["适用于 VMware VAAI 的 NetApp NFS 插件"]安装包。
+* 确保ESXi主机已安装最新修补程序7.0U3或更高版本以及9.14.1 9.14.1或更高版本。
+* 挂载NFS数据存储库。
+* 将DataMover.HardwareAcceleratedMove、DataMover.HardwareAcceleratedInit和VMFS3.HardwareAcceleratedLocking主机设置的值设置为"1"。要自动设置这些值、请应用建议的EXSi主机设置。请参阅 link:../configure/configure-esx-server-multipath-and-timeout-settings.html["配置ESXi服务器多路径和超时设置"]。
+* 使用vserver NFS修改-vserver vserver_name -vStorage enabled命令在Storage Virtual Machine (SVM)上启用vStorage选项。
+* 确保您已安装vSphere 7.0U3最新的修补程序版本。
+* NetApp NFS VAAI插件2.0.1 (内部版本16)支持vSphere 8.x。
+
+
+.步骤
+. 登录到vSphere Client
+. 选择插件部分下的*快捷方式*>* NetApp ONTAP tools*。
+. 选择*Settings*>*NFS VAAI Tools*。
+. 将VAAI插件上传到vCenter Server后、在*现有版本*部分中选择*更改*。如果VAAI插件未上传到vCenter Server、请选择*上传*按钮。
+. 浏览并选择 `.vib`文件，然后选择*Upload*将文件上传到ONTAP工具。
+. 选择*在ESXi主机上安装*、选择要安装NFS VAAI插件的ESXi主机、然后选择*安装*。
++
+仅显示符合此插件安装条件的ESXi主机。您可以在vSphere Web Client的近期任务部分中监控安装进度。
+
+. 安装完成后、您应手动重新启动ESXi主机。
++
+当VMware管理员重新启动ESXi主机时、适用于VMware vSphere的ONTAP工具会自动检测并启用NFS VAAI插件。
+
+
+
+.下一步是什么？
+安装NFS VAAI插件并重新启动ESXi主机后、您需要为VAAI副本卸载配置正确的NFS导出策略。在NFS环境中配置VAAI时、请根据以下要求配置导出策略规则：
+
+* 相关ONTAP卷需要允许NFSv4调用。
+* root用户应保持root身份、并且所有接合父卷都应允许使用NFSv4。
+* 需要在相关NFS服务器上设置VAAI支持选项。
+
+
+有关此过程的详细信息、请参阅 https://kb.netapp.com/on-prem/ontap/DM/VAAI/VAAI-KBs/Configure_the_correct_NFS_export_policies_for_VAAI_copy_offload["为VAAI副本卸载配置正确的NFS导出策略"]知识库文章。
+
+.相关信息
+https://docs.netapp.com/us-en/ontap/nfs-admin/support-vmware-vstorage-over-nfs-concept.html["支持基于 NFS 的 VMware vStorage"]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/enable-disable-nfsv40-task.html["启用或禁用NFSv4.0"]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/ontap-support-nfsv42-concept.html#nfs-v4-2-security-labels["ONTAP支持NFSv4.2"]

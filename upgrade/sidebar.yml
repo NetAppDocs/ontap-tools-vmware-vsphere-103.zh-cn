@@ -1,0 +1,8 @@
+---
+section: upgrade
+title: 升级适用于VMware vSphere的ONTAP工具
+entries:
+- title: 从适用于VMware vSphere 10.x的ONTAP工具升级到10.3
+  url: "/upgrade/upgrade-ontap-tools.html"
+- title: 升级错误代码
+  url: "/upgrade/upgrade-error-codes.html"

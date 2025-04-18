@@ -1,0 +1,200 @@
+---
+permalink: deploy/prerequisites.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部署软件包的空间要求以及一些基本主机系统要求。 
+---
+= 部署适用于VMware vSphere的ONTAP工具的前提条件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部署软件包的空间要求以及一些基本主机系统要求。
+
+您可以将适用于VMware vSphere的ONTAP工具与VMware vCenter Server虚拟设备(vCSA)结合使用。您应在包含ESXi系统的受支持vSphere客户端上部署适用于VMware vSphere的ONTAP工具。
+
+
+
+== 系统要求
+
+* *每个节点的安装包空间要求*
++
+** 15 GB用于精简配置安装
+** 348 GB用于厚配置安装
+
+
+* *主机系统规模估算要求*根据部署规模推荐的内存如下表所示：
+
+
+|===
+
+
+| *部署类型* | * CPU * | *内存(GB)* | *厚配置磁盘空间(GB)* 
+
+
+| 小型非HA | 9 | 18 | 350 
+
+
+| 非HA介质 | 13 | 26 | 350 
+
+
+| HA小型(累计三个节点) | 27 | 54 | 1050 
+
+
+| HA介质(累计三个节点) | 39 | 78 | 1050 
+
+
+| HA大型(累计三个节点) | 51 | 102 | 1050 
+|===
+
+
+== 最低存储和应用程序要求
+
+|===
+| 存储、主机和应用程序 | 最低版本要求 
+
+
+| ONTAP | 9.14.1、9.151和9.16.0。FAS、ASA A系列、ASA C系列、AFF A系列、AFF C系列和ASA R2。 
+
+
+| ESXi主机 | ESXi 7.0.3 
+
+
+| vCenter Server | vCenter 7.0u3 
+
+
+| VASA Provider | 3.0 
+
+
+| OVA应用程序 | 10.3 
+|===
+互操作性表工具(IMT)提供了有关受支持的ONTAP、vCenter Server、ESXi主机和插件应用程序版本的最新信息。
+
+https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["互操作性表工具"^]
+
+
+
+== 部署适用于VMware vSphere的ONTAP工具的配置限制
+
+您可以使用下表作为指南来配置适用于VMware vSphere的ONTAP工具。
+
+|===
+
+
+| * 部署 * | * 类型 * | *数量* | *主机数* 
+
+
+| 非HA | 小型(S) | ~12K | 32 
+
+
+| 非HA | 中(M) | ~24K | 64 
+
+
+| 高可用性 | 小型(S) | ~24K | 64 
+
+
+| 高可用性 | 中(M) | ~50 k | 128 
+
+
+| 高可用性 | 大(L) | ~100k | 256 [注意]表中的主机数显示了来自多个vCenter的主机总数。 
+|===
+
+
+== 适用于VMware vSphere的ONTAP工具—Storage Replication Adapter (SRA)
+
+下表显示了使用适用于VMware vSphere的ONTAP工具时每个VMware Live Site Recovery实例支持的数量。
+
+|===
+| *vCenter部署大小* | *小* | *中* 
+
+
+| 配置为使用基于阵列的复制进行保护的虚拟机总数 | 2000 | 5000 
+
+
+| 基于阵列的复制保护组总数 | 250 | 250 
+
+
+| 每个恢复计划的保护组总数 | 50 | 50 
+
+
+| 复制的数据存储库数量 | 255 | 255 
+
+
+| VM数量 | 4000 | 7000 
+|===
+下表显示了VMware Live Site Recovery的数量以及适用于VMware vSphere部署规模的相应ONTAP工具。
+
+|===
+
+
+| *VMware Live Site Recovery实例数* | * ONTAP工具部署规模* 
+
+
+| 最多4个 | 小型 
+
+
+| 4至8 | 中 
+
+
+| 8个以上 | 大型 
+|===
+有关详细信息，请参阅 https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/overview/site-recovery-manager-system-requirements/operational-limits-of-site-recovery-manager.html["VMware Live Site Recovery的操作限制"]。
+
+
+
+== 端口要求
+
+下表概括了NetApp使用的网络端口及其用途。确保这些端口已打开且可访问、以便在系统中进行正确操作和通信。确保已具备必要的网络配置、以允许这些端口上的流量正常运行关联服务。根据您的安全策略、您可能需要配置防火墙或其他安全设备、以允许网络中的此流量。
+
+|===
+
+
+| * 端口 * | * 问题描述 * 
+
+
+| 22 (TCP) | 在集群配置期间、Ans可 使用此SSH端口进行通信。要执行更改维护用户密码、状态消息等功能、以及在HA配置情况下更新所有三个节点上的值、需要使用此端口。 
+
+
+| 443 (TCP) | 这是VASA Provider服务的传入通信的直通端口。VASA Provider自签名证书和自定义CA证书托管在此端口上。 
+
+
+| 8443 (TCP) | 此端口通过Swagger和Manager用户界面应用程序托管API文档。 
+
+
+| 2379 (TCP) | 这是客户端请求(例如GET、Put、DELETE或监视et执行 密钥值存储区中的密钥)的默认端口。 
+
+
+| 2380 (TCP) | 对于etc集群、这是服务器到服务器通信的默认端口、该集群使用raft Consensus算法、etc用于数据复制和一致性。 
+
+
+| 7472 (tcp+udp) | 这是Prometheus指标服务端口。 
+
+
+| 7946 (tcp+udp) | 此端口用于Docker的容器网络发现。 
+
+
+| 9083 (TCP) | 此端口是VASA Provider服务内部使用的服务端口。 
+
+
+| 1162 (UDP) | 这是SNMP陷阱数据包端口。 
+
+
+| 6443 (TCP) | 来源：RKE2代理节点。目标：REK2服务器节点。说明：Kubenetes API 
+
+
+| 9345 (TCP) | 来源：RKE2代理节点。目标：REK2服务器节点。说明：REK2 Supervisor API 
+
+
+| 8472 (tcp+udp) | 使用法兰通道VXLAN时、所有节点都需要能够通过UDP端口8472访问其他节点。源：所有RKE2节点。Destination：所有REK2节点。描述：带有VXLAN的Canal CNI 
+
+
+| 10250 (TCP) | 源：所有RKE2节点。Destination：所有REK2节点。说明：Kubelet指标 
+
+
+| 30000-32767 (TCP) | 源：所有RKE2节点。Destination：所有REK2节点。说明：nodePort端口范围 
+
+
+| 123 (TCP) | ntpd.使用此端口执行NTP服务器的验证。 
+|===

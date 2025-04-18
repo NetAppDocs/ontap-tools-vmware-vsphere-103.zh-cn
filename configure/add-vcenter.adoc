@@ -1,0 +1,32 @@
+---
+permalink: configure/add-vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: 将vCenter Server实例添加到适用于VMware vSphere的ONTAP工具中、以配置、管理和保护vCenter Server环境中的虚拟数据存储库。 
+---
+= 添加vCenter Server实例
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+将vCenter Server实例添加到适用于VMware vSphere的ONTAP工具中、以配置、管理和保护vCenter Server环境中的虚拟数据存储库。
+
+* 关于此任务 *
+
+通过与vCenter集成、ONTAP工具使您能够直接从vSphere客户端执行配置、快照和数据保护等存储任务、而无需切换到单独的存储管理控制台。
+
+.步骤
+. 打开Web浏览器并导航到URL： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
+. 使用您在部署期间提供的适用于VMware vSphere的ONTAP工具管理员凭据登录。
+. 选择* vCenter *>*添加*以载入vCenter Server实例。请提供您的vCenter IP地址或主机名、用户名、密码和端口详细信息。
+
+
+将vCenter Server实例添加到ONTAP工具会自动触发以下操作：
+
+* vCenter客户端插件已注册为远程插件。
+* 此插件和API的自定义Privileges将应用于vCenter Server实例。
+* 创建自定义角色以管理用户。
+* 此插件会在vSphere用户界面上显示为快捷方式。
+

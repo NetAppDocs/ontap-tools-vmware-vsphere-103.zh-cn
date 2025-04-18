@@ -1,0 +1,33 @@
+---
+permalink: configure/registration-process.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用适用于VMware vSphere的ONTAP工具远程插件界面向vCenter Server实例注册VASA Provider。 
+---
+= 向vCenter Server实例注册VASA Provider
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用适用于VMware vSphere的ONTAP工具向vCenter Server实例注册VASA Provider。VASA Provider设置部分显示选定vCenter Server的VASA Provider注册状态。
+
+.步骤
+. 登录到vSphere Client
+. 选择插件部分下的*快捷方式*>* NetApp ONTAP tools*。
+. 选择*Settings*>*VASA Provider settings *。VASA Provider注册状态将显示为未注册。
+. 选择*注册*按钮以注册VASA Provider。
+. 输入VASA Provider的名称并为VMware vSphere应用程序提供ONTAP工具用户凭据、然后选择*注册*。
+. 成功注册并刷新页面后、将显示已注册的VASA Provider的状态、名称和版本。注册后、取消注册操作将被激活。
+
+
+* 完成后 *
+
+验证已启用的VASA Provider是否列在vCenter Client的VASA Provider下：
+
+.步骤
+. 导航到vCenter Server实例。
+. 使用管理员凭据登录。
+. 选择*存储提供程序*>*配置*。验证是否已正确列出已启用的VASA Provider。
+

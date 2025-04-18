@@ -1,0 +1,18 @@
+---
+permalink: concepts/autosupport.html 
+sidebar: sidebar 
+keywords:  
+summary: AutoSupport 是一种主动监控系统运行状况并自动向 NetApp 技术支持，您的内部支持组织和支持合作伙伴发送消息的机制。 
+---
+= AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+AutoSupport 是一种主动监控系统运行状况并自动向 NetApp 技术支持，您的内部支持组织和支持合作伙伴发送消息的机制。
+
+首次配置存储系统时， AutoSupport 默认处于启用状态。启用 AutoSupport 24 小时后， AutoSupport 开始向技术支持发送消息。
+
+您可以使用维护控制台选项*Application Configuration*>*Disable AutoSupport禁用AutoSupport。建议保持启用状态。启用AutoSupport有助于加快问题检测速度、并有助于更快地解决问题。即使禁用了AutoSupport、系统也会收集AutoSupport信息并将其存储在本地。但是、它不会将报告发送到任何网络。您需要使用第一个VM的维护控制台提供代理URL。使用选项*应用程序配置*>*更新AutoSupport代理URL*输入代理URL。

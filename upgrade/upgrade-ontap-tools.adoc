@@ -1,0 +1,180 @@
+---
+permalink: upgrade/upgrade-ontap-tools.html 
+sidebar: sidebar 
+keywords: upgrade 
+summary: HA和非HA部署均支持升级。 
+---
+= 从适用于VMware vSphere 10.x的ONTAP工具升级到10.3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+HA和非HA部署均支持此升级。支持的升级路径为：
+
+|===
+
+
+| 从适用于VMware vSphere 10.1和10.2配置的ONTAP工具 | 适用于VMware vSphere 10.3配置的ONTAP工具 
+
+
+| 小型非HA | 非HA和高级小型 
+
+
+| 非HA介质 | 非HA和高级介质 
+
+
+| 高级小型 | 非HA和高级小型 
+
+
+| 高级介质 | 非HA和高级介质 
+
+
+| 小型HA | 小型HA 
+
+
+| HA介质 | HA介质 
+
+
+| HA大型 | HA大型 
+|===
+
+NOTE: 支持从适用于VMware vSphere 10.1和10.2的ONTAP工具升级到10.3。不支持从ONTAP工具10.0直接升级到10.3。
+
+* 开始之前 *
+
+对于非HA升级、请关闭ONTAP Tools VM；对于HA升级、请先关闭第一个节点、然后再对虚拟机(VM)设置进行以下更改。
+
+* 由于服务数据存储在虚拟机本地、因此、请向每个节点再添加一个100 GB硬盘。
+* 根据部署方式更改已关闭电源的虚拟机的CPU和内存。为CPU和RAM启用热插件。
++
+|===
+| 10.3部署类型 | 每个节点的CPU (核心)数 | 每个节点的内存(GB) | 每个节点的磁盘空间(GB) | 总CPU (核心) | 内存(GB) | 总磁盘空间(GB) 
+
+
+| 小型非HA | 9 | 18 | 350 | 9 | 18 | 350 
+
+
+| 非HA中型 | 13 | 26 | 350 | 13 | 26 | 350 
+
+
+| 小型HA | 9 | 18 | 350 | 27 | 54 | 1050 
+
+
+| HA中等 | 13 | 26 | 350 | 39 | 78 | 1050 
+
+
+| HA大型 | 17 | 34 | 350 | 51 | 102 | 1050 
+|===
+* 完成更改后、启动虚拟机、并等待服务进入运行状态。
+* 在HA部署中、请更改资源、为CPU和RAM启用热插件、并为第二个和第三个节点添加100 GB硬盘。无需重新启动这些节点。
+* 如果此设备是通过ONTAP工具10.1或10.2以本地路径部署的(易于部署)、则需要在升级之前创建静用快照。
+
+
+如果要从适用于VMware vSphere 10.0的ONTAP工具升级到10.1、则需要完成以下步骤、然后再继续执行升级任务：
+
+*启用诊断*
+
+. 从vCenter Server中、打开一个ONTAP工具控制台。
+. 以维护用户身份登录。
+. 输入*4*以选择*Support and Diagnostic*。
+. 输入*2*以选择*Enable remote diagnostic access*。
+. 输入*y*设置您选择的密码。
+. 使用用户"DIAG"和上一步中设置的密码从终端/putty登录到VM IP地址。
+
+
+*备份MongoDB*
+
+运行以下命令以创建MongoDB的备份：
+
+* kn exec -it NTV-MongoDB-0 sh - kn是kubect1 -n NTV-system的别名。
+* 在POD中运行_env | grep MongoDB_root_password_命令。
+* 运行_exit_命令退出POD。
+* 运行_kn exec NTV-MongoDB-0 --mongodump -u root -p MongoDB_root_password --archive=/tmp/mongodb-backup.gz --gzip_命令以替换上述命令中设置的Mongo_root_password。
+* 运行_kn cp ntV-MongoDB-0：/tmp/MongoDB-backup.gz_ mongodb-backup.gz命令、将使用上述命令创建的MongoDB备份从Pod复制到主机。
+
+
+*获取所有卷的quaise快照*
+
+* 运行"kn get pv"命令并保存命令输出。
+* 使用以下方法之一逐个为所有卷创建快照：
++
+** 在命令行界面中、运行命令_volume Snapshot create -vserver <vserver_name>-volume <volume_name>-Snapshot <snapshot_name>_
+** 从ONTAP系统管理器用户界面中、在搜索栏中按卷名称搜索卷、然后通过选择名称打开该卷。转至快照并添加该卷的快照。
+
+
+
+
+*为vCenter中的VMware vSphere VM创建ONTAP工具的快照(对于HA部署、为3个VM；对于非HA部署、为1个VM)*
+
+* 在vSphere客户端用户界面中、选择虚拟机。
+* 进入快照选项卡并选择*拍摄快照*按钮。为虚拟机创建一个已静用快照。有关详细信息、请参见 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/take-snapshots-of-a-virtual-machine.html["为虚拟机创建快照"^]。
+
+
+在执行升级之前、请从日志包中删除前缀为"generate—support-Bundle—job"的已完成Pod。如果正在生成支持包、请等待生成完成、然后删除此Pod。
+
+对于任何类型的升级、您都需要额外添加一个100 GB硬盘驱动器(HDD)。要添加HDD、请执行以下任务。
+
+. 选择单节点配置中的VM或HA配置中的所有三个VM。
+. 右键单击虚拟机并选择*添加新设备*>*硬盘*
+. 在*新硬盘*字段中添加一个100 GB的HDD。
+. 选择*应用*
+
+
+添加硬盘后、根据相应配置更新虚拟机资源、然后重新启动主虚拟机。
+
+此时将创建一个新的HDD。动态存储配置程序使用此HDD来生成或复制卷。
+
+.步骤
+. 将适用于VMware vSphere的ONTAP工具升级ISO上传到内容库。
+. 在主VM页面中，选择*Actions*>*Edit Settings*
+. 在编辑设置窗口的*CD/DVD驱动器*字段下选择内容库ISO文件。
+. 选择ISO文件并选择*OK*。选择*CD/DVD驱动器*字段中的已连接复选框。image:../media/primaryvm-edit-settings.png["编辑设置"]
+. 从vCenter Server中、打开一个ONTAP工具控制台。
+. 以维护用户身份登录。
+. 输入*3*选择“System Configuration”(系统配置)菜单。
+. 输入*7*以选择升级选项。
+. 升级时、系统会自动执行以下操作：
++
+.. 证书升级
+.. 远程插件升级
+
+
+
+
+升级到适用于VMware vSphere 10.3的ONTAP工具后、您可以：
+
+* 从管理器用户界面禁用服务
+* 从非HA设置移至HA设置
+* 将非HA小型配置纵向扩展为非HA中型配置、或者纵向扩展为HA中型或大型配置。
+* 如果是非HA升级、请重新启动ONTAP工具VM以反映所做的更改。如果要升级HA、请重新启动第一个节点、以反映此节点上所做的更改。
+
+
+* 完成后 *
+
+从适用于VMware vSphere的ONTAP工具的先前版本升级到10.3之后、请重新扫描SRA适配器、以验证是否已在VMware Live Site Recovery存储复制适配器页面上更新详细信息。
+
+成功升级后、请按照以下过程手动从ONTAP中删除Trident卷：
+
+
+NOTE: 如果适用于VMware vSphere 10.1或10.2的ONTAP工具采用非HA小型或中型(本地路径)配置、则不需要执行这些步骤。
+
+. 从vCenter Server中、打开一个ONTAP工具控制台。
+. 以维护用户身份登录。
+. 输入*4*以选择*Support and Diagnostic*菜单。
+. 输入*1*以选择*Access diagnostics shell*选项。
+. 运行以下命令
++
+[listing]
+----
+sudo python3 /home/maint/scripts/ontap_cleanup.py
+----
+. 输入ONTAP用户名和密码
+
+
+此操作将删除适用于VMware vSphere 10.1/10.2的ONTAP工具中使用的ONTAP中的所有Trident卷。
+
+* 相关信息 *
+
+link:../migrate/migrate-to-latest-ontaptools.html["从适用于VMware vSphere 9.x的ONTAP工具迁移到10.3"]

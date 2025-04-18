@@ -1,0 +1,106 @@
+---
+permalink: deploy/ontap-tools-deployment.html 
+sidebar: sidebar 
+keywords:  
+summary: 适用于VMware vSphere设备的ONTAP工具部署为小型单节点、并通过核心服务支持NFS和VMFS数据存储库。 
+---
+= 部署适用于VMware vSphere的ONTAP工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+适用于VMware vSphere设备的ONTAP工具部署为小型单节点、并通过核心服务支持NFS和VMFS数据存储库。
+
+* 开始之前 *
+
+VMware中的内容库是一个容器对象、用于存储VM模板、vapp模板和其他类型的文件。使用内容库进行部署可为您提供无缝体验、因为它不依赖于网络连接。
+
+
+NOTE: 您应将内容库存储在共享数据存储库上、以便集群中的所有主机都可以访问该内容库。在将设备配置为HA配置之前、创建用于存储OVA的内容库。部署后、请勿删除内容库模板。
+
+
+NOTE: 要稍后启用HA部署、请勿将托管ONTAP工具的虚拟机直接部署在ESXi主机上。而是将其部署在集群或资源池上。
+
+如果您没有内容库、请按照以下步骤创建一个：
+
+*创建内容库*如果您计划仅使用小型单节点部署，则不需要创建内容库。
+
+.  `.zip`从下载包含适用于VMware vSphere的ONTAP工具的二进制文件(_.ova_)和签名证书的文件 https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支持站点"^]。
+. 登录到vSphere Client
+. 选择vSphere客户端菜单并选择*内容库*。
+. 选择页面右侧的*创建*。
+. 提供库的名称并创建内容库。
+. 导航到您创建的内容库。
+. 选择页面右侧的*Actions*并选择*Import Item*并导入OVA文件。
+
+
+
+NOTE: 有关详细信息、请参见 https://blogs.vmware.com/vsphere/2020/01/creating-and-using-content-library.html["创建和使用内容库"]博客。
+
+
+NOTE: 在继续部署之前、请将清单上集群的Distributed Resource Scheduler (DRS)设置为"保守"。这样可确保在安装期间不会迁移VM。
+
+适用于VMware vSphere的ONTAP工具最初部署为非HA设置。要扩展到HA部署、您需要启用CPU热插拔和内存热插件。您可以在部署过程中执行此步骤、也可以在部署后编辑虚拟机设置。
+
+.步骤
+.  `.zip`从下载包含适用于VMware vSphere的ONTAP工具的二进制文件(_.ova_)和签名证书的文件 https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支持站点"^]。如果已将OVA导入到内容库中、则可以跳过此步骤并继续下一步。
+. 登录到vSphere服务器。
+. 导航到要部署OVA的资源池、集群或主机。
++
+
+NOTE: 切勿将适用于VMware vSphere虚拟机的ONTAP工具存储在其管理的vvol数据存储库中。
+
+. 您可以从内容库或本地系统部署OVA。
++
+|===
+
+
+| 从本地系统 | 从内容库 
+
+
+| a.右键单击并选择*部署OVF模板...*。b.从URL中选择OVA文件或浏览到其位置，然后选择*下一步*。 | a.转到您的内容库并选择要部署的库项目。b.选择*操作*>*从此模板中新建虚拟机* 
+|===
+. 在*选择名称和文件夹*字段中，输入虚拟机名称并选择其位置。
++
+** 如果您使用的是vCenter 8.0.3版本，请选择*自定义此虚拟机的硬件*选项，此选项将激活名为*自定义硬件*的附加步骤，然后再进入*准备完成*窗口。
+** 如果您使用的是vCenter 7.0.3版本、请在部署结束时按照*下一步是什么？*一节中的步骤进行操作。
+
+
+. 选择计算机资源，然后选择*Next*。(可选)选中*自动启动已部署的VM*复选框。
+. 查看模板的详细信息，然后选择*Next*。
+. 阅读并接受许可协议，然后选择*Next*。
+. 为配置和磁盘格式选择存储，然后选择*Next*。
+. 为每个源网络选择目标网络，然后选择*Next*。
+. 在*自定义模板*窗口中，填写必填字段，然后选择*下一步*。
++
+** 此信息会在安装期间进行验证。如果存在差异、Web控制台上会显示一条错误消息、并提示您更正该错误。
+** 主机名必须包含字母(A-Z、a-z)、数字(0-9)和连字符(-)。要配置双堆栈、请指定映射到IPv6地址的主机名。
++
+
+NOTE: 不支持纯IPv6。包含IPv6和IPv4地址的VLAN支持混合模式。
+
+
+
+. 使用vCenter 8.0.3版本时，在*Customize harder*(自定义硬件*)窗口中，启用*CPU Hot add*和*Memory Hot plug*选项以启用HA功能。
+. 查看*Ready to Complete*(准备完成*)窗口中的详细信息，选择*Complete*(完成*)。
++
+创建部署任务后、vSphere任务栏中将显示进度。
+
+. 完成此任务后、打开虚拟机的电源。
+
+
+您可以在VM的Web控制台中跟踪安装进度。
+
+如果在OVF表单中存在差异、则会出现一个对话框、提示您采取更正操作。使用Tab按钮导航、进行必要的更改、然后选择"确定"。您有三次尝试机会来解决任何问题。如果尝试三次后问题仍然存在、则安装过程将停止、建议在新虚拟机上重试安装。
+
+.下一步是什么？
+如果您已将适用于VMware vSphere的ONTAP工具部署到vCenter Server 7..3中、请在部署后按照以下步骤进行操作。
+
+. 登录到vCenter Client
+. 关闭ONTAP工具节点。
+. 导航到*库存*下适用于VMware vSphere虚拟机的ONTAP工具、然后选择*编辑设置*选项。
+. 在*CPU*选项下，选中*Enable CPU Hot add*复选框
+. 在*内存*选项下，选中*内存热插拔*旁边的*启用*复选框。
+

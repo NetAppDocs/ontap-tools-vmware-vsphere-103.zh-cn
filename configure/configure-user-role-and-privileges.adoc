@@ -1,0 +1,451 @@
+---
+permalink: configure/configure-user-role-and-privileges.html 
+sidebar: sidebar 
+keywords: user roles 
+summary: 您可以使用适用于VMware vSphere的ONTAP工具和ONTAP System Manager提供的JSON文件配置用于管理存储后端的新用户角色。 
+---
+= 配置ONTAP用户角色和权限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用适用于VMware vSphere的ONTAP工具和ONTAP System Manager提供的JSON文件配置用于管理存储后端的新用户角色和特权。
+
+.开始之前
+* 您应已使用以下<loadbalancerIP>命令从适用于VMware vSphere的ONTAP工具下载ONTAP特权文件：_\https：//VMware：8443/Virtualization：user-golites/User_roles.zip_。
+* 您应该已使用从ONTAP工具下载ONTAP Privileges文件 `\https://<loadbalancerIP>:8443/virtualization/user-privileges/users_roles.zip`。
++
+
+NOTE: 您可以在集群级别或直接在Storage Virtual Machine (SVM)级别创建用户。您也可以在不使用user_roles.json文件的情况下创建用户、如果这样做、您需要在SVM级别具有一组最低权限。
+
+* 您应已使用存储后端的管理员权限登录。
+
+
+.步骤
+. 提取下载的_\https：//https：<loadbalancerIP>：8443/Virtualization /用户权限/USER_Roles.zip_文件。
+. 使用集群的集群管理IP地址访问ONTAP系统管理器。
+. 使用管理Privileges登录到集群。要配置用户、请执行以下步骤：
++
+.. 要配置集群ONTAP工具用户，请选择*Cluster*>*Settings*>*Users and Roles*窗格。
+.. 要配置SVM ONTAP工具用户、请选择*存储SVM*>*设置*>*用户和角色*窗格。
+.. 在“用户”下选择*Add*。
+.. 在*添加用户*对话框中、选择*虚拟化产品*。
+.. *浏览*选择并上传ONTAP权限JSON文件。
++
+此时将自动填充"Product"字段。
+
+.. 从产品功能下拉菜单中选择所需的功能。
++
+系统将根据选定的产品功能自动填充“角色”字段。
+
+.. 输入所需的用户名和密码。
+.. 选择用户所需的Privileges (发现、创建存储、修改存储、销毁存储、NS/SAN角色)、然后选择*添加*。
+
+
+
+
+此时将添加新角色和用户、您可以在已配置的角色下查看详细权限。
+
+
+
+== SVM聚合映射要求
+
+要使用SVM用户凭据配置数据存储库、适用于VMware vSphere的内部ONTAP工具会在数据存储库发布API中指定的聚合上创建卷。ONTAP不允许使用SVM用户凭据在SVM上未映射的聚合上创建卷。要解决此问题、您需要使用ONTAP REST API或命令行界面将SVM映射到聚合、如下所述。
+
+REST API：
+
+[listing]
+----
+PATCH "/api/svm/svms/f16f0935-5281-11e8-b94d-005056b46485" '{"aggregates":{"name":["aggr1","aggr2","aggr3"]}}'
+----
+ONTAP命令行界面：
+
+[listing]
+----
+sti115_vsim_ucs630f_aggr1 vserver show-aggregates                                        AvailableVserver        Aggregate      State         Size Type    SnapLock Type-------------- -------------- ------- ---------- ------- --------------svm_test       sti115_vsim_ucs630f_aggr1                               online     10.11GB vmdisk  non-snaplock
+----
+
+
+== 手动创建ONTAP用户和角色
+
+按照本节中的说明手动创建用户和角色、而不使用JSON文件。
+
+. 使用集群的集群管理IP地址访问ONTAP系统管理器。
+. 使用管理Privileges登录到集群。
++
+.. 要配置集群ONTAP工具角色，请选择*Cluster*>*Settings*>*Users and Roles*窗格。
+.. 要配置集群SVM ONTAP工具角色、请选择*存储SVM*>*设置*>*用户和角色*窗格
+
+
+. 创建角色：
++
+.. 在*roles*表下选择*Add*。
+.. 输入*角色名称*和*角色属性*详细信息。
++
+从下拉列表中添加*REST API Path*和相应的访问权限。
+
+.. 添加所有所需的API并保存更改。
+
+
+. 创建用户：
++
+.. 在*USERS*表下选择*ADD*。
+.. 在*添加用户*对话框中，选择*系统管理器*。
+.. 输入*用户名*。
+.. 从上面的*Create Roles*步骤中创建的选项中选择*Role*。
+.. 输入要授予访问权限的应用程序和身份验证方法。ONTAPI和HTTP是必需的应用程序，并且身份验证类型为*Password*。
+.. 设置*用户密码*和*保存*用户。
+
+
+
+
+
+
+=== 非管理员全局范围集群用户所需的最低权限列表
+
+本节列出了在不使用Users JSON文件的情况下创建的非管理员全局范围集群用户所需的最低权限。如果在本地范围添加了集群、建议使用JSON文件创建用户、因为适用于VMware vSphere的ONTAP工具不仅需要读取特权、还需要在ONTAP上进行配置。
+
+使用API：
+
+|===
+
+
+| API | 访问级别 | 用于 
+
+
+| /API/cluster | 只读 | 集群配置发现 
+
+
+| /API/cluster-licensing /许可证 | 只读 | 协议专用许可证的许可证检查 
+
+
+| /API/cluster-node | 只读 | 平台类型发现 
+
+
+| /api/安全性/帐户 | 只读 | 特权发现 
+
+
+| /api/安全性/角色 | 只读 | 特权发现 
+
+
+| /API/storage/Aggregates | 只读 | 数据存储库/卷配置期间的聚合空间检查 
+
+
+| /API/storage/cluster | 只读 | 以获取集群级别空间和效率数据 
+
+
+| /API/storage/disks | 只读 | 以获取聚合中关联的磁盘 
+
+
+| /API/storage/QoS/策略 | 读取/创建/修改 | QoS和VM策略管理 
+
+
+| /apI/SVM/SVM | 只读 | 在本地添加集群的情况下获取SVM配置。 
+
+
+| /API/network/IP/接口 | 只读 | 添加存储后端—要确定管理LIF的范围、请使用集群/SVM 
+|===
+
+
+=== 为基于VMware vSphere ONTAP API的集群范围用户创建ONTAP工具
+
+
+NOTE: 您需要发现、创建、修改和销毁Privileges、以便在数据存储库出现故障时执行修补操作和自动回滚。缺少所有这些Privileges会导致工作流中断和清理问题。
+
+通过为基于VMware vSphere ONTAP API的用户创建ONTAP工具并执行发现、创建存储、修改存储、销毁存储Privileges、可以启动发现并管理ONTAP工具工作流。
+
+要使用上述所有Privileges创建集群范围的用户、请运行以下命令：
+
+[listing]
+----
+
+security login rest-role create -role <role-name> -api /api/application/consistency-groups -access all
+
+security login rest-role create -role <role-name> -api /api/private/cli/snapmirror -access all
+
+security login rest-role create -role <role-name> -api /api/protocols/nfs/export-policies -access all
+
+security login rest-role create -role <role-name> -api /api/protocols/nvme/subsystem-maps -access all
+
+security login rest-role create -role <role-name> -api /api/protocols/nvme/subsystems -access all
+
+security login rest-role create -role <role-name> -api /api/protocols/san/igroups -access all
+
+security login rest-role create -role <role-name> -api /api/protocols/san/lun-maps -access all
+
+security login rest-role create -role <role-name> -api /api/protocols/san/vvol-bindings -access all
+
+security login rest-role create -role <role-name> -api /api/snapmirror/relationships -access all
+
+security login rest-role create -role <role-name> -api /api/storage/volumes -access all
+
+security login rest-role create -role <role-name> -api "/api/storage/volumes/*/snapshots" -access all
+
+security login rest-role create -role <role-name> -api /api/storage/luns -access all
+
+security login rest-role create -role <role-name> -api /api/storage/namespaces -access all
+
+security login rest-role create -role <role-name> -api /api/storage/qos/policies -access all
+
+security login rest-role create -role <role-name> -api /api/cluster/schedules -access read_create
+
+security login rest-role create -role <role-name> -api /api/snapmirror/policies -access read_create
+
+security login rest-role create -role <role-name> -api /api/storage/file/clone -access read_create
+
+security login rest-role create -role <role-name> -api /api/storage/file/copy -access read_create
+
+security login rest-role create -role <role-name> -api /api/support/ems/application-logs -access read_create
+
+security login rest-role create -role <role-name> -api /api/protocols/nfs/services -access read_modify
+
+security login rest-role create -role <role-name> -api /api/cluster -access readonly
+
+security login rest-role create -role <role-name> -api /api/cluster/jobs -access readonly
+
+security login rest-role create -role <role-name> -api /api/cluster/licensing/licenses -access readonly
+
+security login rest-role create -role <role-name> -api /api/cluster/nodes -access readonly
+
+security login rest-role create -role <role-name> -api /api/cluster/peers -access readonly
+
+security login rest-role create -role <role-name> -api /api/name-services/name-mappings -access readonly
+
+security login rest-role create -role <role-name> -api /api/network/ethernet/ports -access readonly
+
+security login rest-role create -role <role-name> -api /api/network/fc/interfaces -access readonly
+
+security login rest-role create -role <role-name> -api /api/network/fc/logins -access readonly
+
+security login rest-role create -role <role-name> -api /api/network/fc/ports -access readonly
+
+security login rest-role create -role <role-name> -api /api/network/ip/interfaces -access readonly
+
+security login rest-role create -role <role-name> -api /api/protocols/nfs/kerberos/interfaces -access readonly
+
+security login rest-role create -role <role-name> -api /api/protocols/nvme/interfaces -access readonly
+
+security login rest-role create -role <role-name> -api /api/protocols/san/fcp/services -access readonly
+
+security login rest-role create -role <role-name> -api /api/protocols/san/iscsi/services -access readonly
+
+security login rest-role create -role <role-name> -api /api/security/accounts -access readonly
+
+security login rest-role create -role <role-name> -api /api/security/roles -access readonly
+
+security login rest-role create -role <role-name> -api /api/storage/aggregates -access readonly
+
+security login rest-role create -role <role-name> -api /api/storage/cluster -access readonly
+
+security login rest-role create -role <role-name> -api /api/storage/disks -access readonly
+
+security login rest-role create -role <role-name> -api /api/storage/qtrees -access readonly
+
+security login rest-role create -role <role-name> -api /api/storage/quota/reports -access readonly
+
+security login rest-role create -role <role-name> -api /api/storage/snapshot-policies -access readonly
+
+security login rest-role create -role <role-name> -api /api/svm/peers -access readonly
+
+security login rest-role create -role <role-name> -api /api/svm/svms -access readonly
+
+----
+此外、对于ONTAP 9.16.0及更高版本、请运行以下命令：
+
+[listing]
+----
+security login rest-role create -role <role-name> -api /api/storage/storage-units -access all
+----
+
+
+=== 为基于VMware vSphere ONTAP API的SVM范围的用户创建ONTAP工具
+
+要使用所有Privileges创建SVM范围的用户、请运行以下命令：
+
+[listing]
+----
+security login rest-role create -role <role-name> -api /api/application/consistency-groups -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/private/cli/snapmirror -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/nfs/export-policies -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/nvme/subsystem-maps -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/nvme/subsystems -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/san/igroups -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/san/lun-maps -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/san/vvol-bindings -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/snapmirror/relationships -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/volumes -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api "/api/storage/volumes/*/snapshots" -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/luns -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/namespaces -access all -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/cluster/schedules -access read_create -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/snapmirror/policies -access read_create -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/file/clone -access read_create -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/file/copy -access read_create -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/support/ems/application-logs -access read_create -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/nfs/services -access read_modify -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/cluster -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/cluster/jobs -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/cluster/peers -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/name-services/name-mappings -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/network/ethernet/ports -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/network/fc/interfaces -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/network/fc/logins -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/network/ip/interfaces -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/nfs/kerberos/interfaces -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/nvme/interfaces -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/san/fcp/services -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/protocols/san/iscsi/services -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/security/accounts -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/security/roles -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/qtrees -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/quota/reports -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/storage/snapshot-policies -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/svm/peers -access readonly -vserver <vserver-name>
+
+security login rest-role create -role <role-name> -api /api/svm/svms -access readonly -vserver <vserver-name>
+----
+此外、对于ONTAP 9.16.0及更高版本、请运行以下命令：
+
+[listing]
+----
+security login rest-role create -role <role-name> -api /api/storage/storage-units -access all -vserver <vserver-name>
+----
+要使用上述基于API创建的角色创建基于API的新用户、请运行以下命令：
+
+[listing]
+----
+security login create -user-or-group-name <user-name> -application http -authentication-method password -role <role-name> -vserver <cluster-or-vserver-name>
+----
+示例：
+
+[listing]
+----
+security login create -user-or-group-name testvpsraall -application http -authentication-method password -role OTV_10_VP_SRA_Discovery_Create_Modify_Destroy -vserver C1_sti160-cluster_
+----
+要解除帐户锁定、请运行以下命令以启用对管理界面的访问：
+
+[listing]
+----
+security login unlock -user <user-name> -vserver <cluster-or-vserver-name>
+----
+示例：
+
+[listing]
+----
+security login unlock -username testvpsraall -vserver C1_sti160-cluster
+----
+
+
+== 将适用于VMware vSphere 10.1用户的ONTAP工具升级到10.3用户
+
+如果适用于VMware vSphere 10.1的ONTAP工具用户是使用json文件创建的集群范围用户、请使用admin用户在ONTAP命令行界面上运行以下命令、以升级到10.3版。
+
+对于产品功能：
+
+* VSC
+* VSC和VASA Provider
+* VSC和SRA
+* VSC、VASA Provider和SRA。
+
+
+集群Privileges：
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem show"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem host show"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem map show"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve sho-interface"-access read_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem host add"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem map add"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem delete"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem host remove"-access all_
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem map remove"-access all_
+
+如果适用于VMware vSphere 10.1的ONTAP工具用户是使用json文件创建的SVM范围用户、请使用admin用户在ONTAP命令行界面上运行以下命令、以升级到10.3版。
+
+SVM Privileges：
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve"-access all -vserver nve_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem show"-access all -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem host show"-access all -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem map show"-access all -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name>-cmddirname "vserver nve sho-interface"-access read -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem host add"-access all -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem map add"-access all -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve"-access all -vserver nve_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem delete"-access all -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem host remove"-access all -vserver nv_<vserver-name>
+
+_security login Role create -Role <existing-role-name> nve -cmddirname "vserver nve subsystem map remove"-access all -vserver nv_<vserver-name>
+
+向现有角色添加命令_vserver nvexe命名空间show_和_vserver nvserver subsystem show_可添加以下命令。
+
+[listing]
+----
+vserver nvme namespace create
+
+vserver nvme namespace modify
+
+vserver nvme subsystem create
+
+vserver nvme subsystem modify
+
+----

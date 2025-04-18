@@ -1,0 +1,52 @@
+---
+permalink: concepts/rbac-learn-about.html 
+sidebar: sidebar 
+keywords: role based access control, rbac, rbac components, learn about rbac 
+summary: '基于角色的访问控制(Role-Based Access Control、RBAC)是一种用于控制对组织内资源访问的安全框架。RBAC通过定义具有特定权限级别的角色来执行操作、而不是为单个用户分配授权、从而简化了管理。定义的角色会分配给用户、这有助于降低出错风险并简化整个组织的访问控制管理。' 
+---
+= 了解适用于VMware vSphere 10 RBAC的ONTAP工具
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+基于角色的访问控制(Role-Based Access Control、RBAC)是一种用于控制对组织内资源访问的安全框架。RBAC通过定义具有特定权限级别的角色来执行操作、而不是为单个用户分配授权、从而简化了管理。定义的角色会分配给用户、这有助于降低出错风险并简化整个组织的访问控制管理。
+
+RBAC标准模型由多种实施技术或阶段组成、这些技术或阶段的复杂性不断增加。因此、根据软件供应商及其客户的需求、实际RBAC部署可能会有所不同、从相对简单到非常复杂不等。
+
+
+
+== RBAC组件
+
+概括地说、每个RBAC实施通常都包含多个组件。在定义授权流程时、这些组件以不同方式绑定在一起。
+
+.Privileges
+权限是可以允许或拒绝的操作或功能。它可能很简单、例如能够读取文件、也可能是特定于给定软件系统的更抽象的操作。此外、还可以定义Privileges以限制对REST API端点和命令行界面命令的访问。每个RBAC实施都包括预定义的Privileges、并且还允许管理员创建自定义Privileges。
+
+.角色
+_Role__是包含一个或多个Privileges的容器。角色通常根据特定任务或工作职能进行定义。将角色分配给用户后、系统会为该用户授予该角色中包含的所有Privileges。与Privileges一样、实施也包括预定义角色、通常允许创建自定义角色。
+
+.对象
+object_表示在RBAC环境中标识的实际资源或抽象资源。通过Privileges定义的操作将在关联对象上或与关联对象一起执行。根据实施情况、可以将Privileges授予某个对象类型或特定对象实例。
+
+.用户和组
+_USERS_被分配或关联到身份验证后应用的角色。某些RBAC实施仅允许为一个用户分配一个角色、而另一些则允许为每个用户分配多个角色、可能一次只允许一个角色处于活动状态。将角色分配给_groups_可以进一步简化安全管理。
+
+.权限
+permission是将用户或组与角色绑定到对象的定义。权限对于分层对象模型非常有用、在该模型中、可以选择由层次结构中的子级继承权限。
+
+
+
+== 两个RBAC环境
+
+使用适用于VMware vSphere 10的ONTAP工具时、需要考虑两种不同的RBAC环境。
+
+.VMware vCenter Server
+VMware vCenter Server中的RBAC实施用于限制对通过vSphere Client用户界面公开的对象的访问。在安装适用于VMware vSphere 10的ONTAP工具过程中、RBAC环境进行了扩展、以包括表示ONTAP工具功能的其他对象。可通过远程插件访问这些对象。有关详细信息、请参见。link:../concepts/rbac-vcenter-environment.html["vCenter Server RBAC环境"]
+
+.ONTAP集群
+适用于VMware vSphere 10的ONTAP工具可通过ONTAP REST API连接到ONTAP集群以执行与存储相关的操作。对存储资源的访问通过身份验证期间提供的与ONTAP用户关联的ONTAP角色进行控制。有关详细信息、请参见 link:../concepts/rbac-ontap-environment.html["ONTAP RBAC环境"] 。

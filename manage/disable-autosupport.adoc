@@ -1,0 +1,25 @@
+---
+permalink: manage/disable-autosupport.html 
+sidebar: sidebar 
+keywords:  
+summary: 首次配置存储系统时、默认情况下会启用AutoSupport。它会在启用后24小时向技术支持发送消息。 
+---
+= 禁用AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+首次配置存储系统时、默认情况下会启用AutoSupport。它会在启用后24小时向技术支持发送消息。禁用AutoSupport后、您将无法再获得主动式支持和监控。
+
+
+NOTE: 建议您始终启用AutoSupport。它有助于加快问题检测和解决速度。系统会收集AutoSupport信息并将其存储在本地、即使已禁用也是如此。
+
+.步骤
+. 从vCenter Server中、打开维护控制台。
+. 以维护用户身份登录。
+. 输入1选择*应用程序配置*。
+. 输入3以选择*Disable AutoSupport (禁用Internet连接)*。
+. 在确认对话框中输入y。
+
