@@ -384,8 +384,6 @@
   <block id="b7d863d6846eaf1689410c02279f9ea6" category="doc">添加存储后端</block>
   <block id="442290d4045e6c10552f661da43a9706" category="paragraph">通过添加存储后端、您可以加入ONTAP集群。</block>
   <block id="78166ce4ccceeedfbf6aeb8682851072" category="paragraph">* 关于此任务 *</block>
-  <block id="0333b8e59818e95f8c3464384f005977" category="paragraph">要在多租户架构中向全局范围的集群添加存储后端、请使用ONTAP工具管理器添加存储后端。将存储后端添加到全局集群后、您必须将此集群与所需的vCenter租户相关联。vCenter租户必须载入所需的Storage Virtual Machine (SVM)。这样、SVM用户便可配置Vvol数据存储库。您可以使用SVM在vCenter中添加存储。</block>
-  <block id="91310533ef068c4c3d95d7102fd2e7da" category="paragraph">要将存储后端添加到本地范围的集群、请直接使用vCenter Server上的ONTAP工具插件添加ONTAP系统。</block>
   <block id="da6388fdc3d2fad794be9aa033101c19" category="open-title">使用ONTAP工具管理器</block>
   <block id="a761d3a6a5565687c80a0d269ca343c4" category="admonition">在多租户设置中、您可以全局添加存储后端集群、并在本地添加SVM以使用SVM用户凭据。</block>
   <block id="af97740fd99b637615a0fe129d5fc42f" category="list-text">从Web浏览器启动ONTAP工具管理器：<block ref="a2fad8db83c338dbc95675bd05c70607" prefix=" " category="inline-code"></block></block>
@@ -394,7 +392,6 @@
   <block id="9cb992b5ee53404c646502db030f7c27" category="list-text">添加存储后端并提供服务器IP地址或FQDN、用户名和密码详细信息。</block>
   <block id="60f27fc86b38229b1a666fd3c7b129f1" category="admonition">支持IPv4和IPv6地址管理生命周期。</block>
   <block id="a6fd0b4332e8ac1bd18da3d605f3f558" category="open-title">使用vSphere客户端用户界面</block>
-  <block id="15d9ec0601efc7a09529f55671b2bf35" category="admonition">使用vSphere客户端用户界面添加存储后端时、Vvol数据存储库不支持直接添加SVM用户。</block>
   <block id="3c4b541b5d5310d633c23010dd81989e" category="list-text">登录到vSphere Client</block>
   <block id="3a3cf1aabccd549ecea01e8e5bd01415" category="list-text">在快捷方式页面中，选择插件部分下的NetApp ONTAP tools*。</block>
   <block id="1371ece860fedc2eae03b50872f67242" category="list-text">添加存储后端并提供服务器IP地址、用户名、密码和端口详细信息。</block>
@@ -2164,4 +2161,6 @@
   <block id="0c72f5748e7c096b829fa8c13bdb6b7f" category="list-text">IPv4是节点配置的IP地址组件、可用于在节点上启用诊断Shell和SSH访问、以便进行调试和维护。</block>
   <block id="e10687c7d1d3c93cdb138a57d9d14bdb" category="list-text">节点互连IP地址用于内部通信。</block>
   <block id="3e691305a01d01aac8e30b75bd1d8a27" category="cell">用于内部通信的节点互连IP地址</block>
+  <block id="7ffde475c4ea55e9fc7c8c11becbc141" category="paragraph">如果在多租户设置中、vCenter充当关联SVM的租户、请使用ONTAP工具管理器添加集群。将存储后端与vCenter Server相关联、以便将其全局映射到已登录的vCenter Server实例。vCenter租户必须载入所需的Storage Virtual Machine (SVM)。这样、SVM用户便可配置Vvol数据存储库。您可以使用SVM在vCenter中添加存储。</block>
+  <block id="112fa4a14bcd73096ce0a79df18e90c8" category="admonition">通过vSphere客户端用户界面配置存储后端时、请务必注意、Vvol数据存储库不支持直接添加SVM用户。</block>
 </blocks>
