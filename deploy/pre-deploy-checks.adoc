@@ -63,7 +63,7 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 | ONTAP工具应用程序的IP地址 |  
 
 
-| 用于节点间通信的节点互连IP地址 |  
+| 用于内部通信的节点互连IP地址 |  
 
 
 | 第一个节点的DNS主机名 |  
