@@ -21,6 +21,10 @@ summary: 将vCenter Server实例添加到适用于VMware vSphere的ONTAP工具�
 . 打开Web浏览器并导航到URL： `\https://<ONTAPtoolsIP>:8443/virtualization/ui/`
 . 使用您在部署期间提供的适用于VMware vSphere的ONTAP工具管理员凭据登录。
 . 选择* vCenter *>*添加*以载入vCenter Server实例。请提供您的vCenter IP地址或主机名、用户名、密码和端口详细信息。
++
+
+NOTE: 您不需要管理员帐户即可将vCenter实例添加到ONTAP工具。您可以创建自定义角色、而无需具有有限权限的管理员帐户。有关详细信息、请参见 link:../concepts/rbac-vcenter-use.html["将vCenter Server RBAC与适用于VMware vSphere 10的ONTAP工具结合使用"] 。
+
 
 
 将vCenter Server实例添加到ONTAP工具会自动触发以下操作：
