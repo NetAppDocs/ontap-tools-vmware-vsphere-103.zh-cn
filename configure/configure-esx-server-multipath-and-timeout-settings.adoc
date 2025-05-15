@@ -50,23 +50,14 @@ NOTE: 您可以展开ESXi主机以查看当前值。
 
 === HBA/CNA适配器设置
 
-为NetApp存储系统设置建议的HBA超时设置。
+将以下参数设置为默认值：
 
-|===
-| 参数 | 将此值设置为... 
-
-
-| Disk.QFullSampleSize | 所有配置均为32。设置此值有助于防止出现 I/O 错误。 
-
-
-| Disk.QFullThreshold | 所有配置均为8。设置此值有助于防止出现 I/O 错误。 
+* Disk.QFullSampleSize
+* Disk.QFullThreshold
+* Emulex FC HBA 超时
+* QLogic FC HBA 超时
 
 
-| Emulex FC HBA 超时 | 默认值。 
-
-
-| QLogic FC HBA 超时 | 默认值。 
-|===
 
 
 === MPIO设置

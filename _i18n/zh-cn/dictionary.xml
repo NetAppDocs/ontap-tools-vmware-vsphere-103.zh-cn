@@ -432,15 +432,10 @@
   <block id="a4190631e34ccca7730e594f6655cc87" category="paragraph">使用适用于VMware vSphere的ONTAP工具、您可以在ESXi主机上设置超时值和其他值、以确保性能最佳并成功进行故障转移。适用于VMware vSphere的ONTAP工具设置的值基于内部NetApp测试。</block>
   <block id="9232ab7e918fc93452c2dc7c8fab1b8c" category="paragraph">您可以在 ESXi 主机上设置以下值：</block>
   <block id="ab9d8dfb65807487a899df1683e128fa" category="section-title">HBA/CNA适配器设置</block>
-  <block id="d3c41b5a4cf556f3a598cc1221e08ee4" category="paragraph">为NetApp存储系统设置建议的HBA超时设置。</block>
-  <block id="3225a10b07f1580f10dee4abc3779e6c" category="cell">参数</block>
   <block id="c77eb099ccd3a59aa3a56c3c98c84669" category="cell">将此值设置为...</block>
   <block id="117704664d6cada78ac3107380f63d23" category="cell">Disk.QFullSampleSize</block>
-  <block id="07b21acb18ec7b34bd91453e33448369" category="cell">所有配置均为32。设置此值有助于防止出现 I/O 错误。</block>
   <block id="f66a3c183f0e736240b77f8b755c880e" category="cell">Disk.QFullThreshold</block>
-  <block id="ed6604a4485d16e1285db04ae3d4279f" category="cell">所有配置均为8。设置此值有助于防止出现 I/O 错误。</block>
   <block id="19c08de7404551288e1274186e039ef4" category="cell">Emulex FC HBA 超时</block>
-  <block id="6ea7e3b1d2b04c77c55309b1aaa41f8c" category="cell">默认值。</block>
   <block id="d46cddda4da7ec11f17472d11df95b68" category="cell">QLogic FC HBA 超时</block>
   <block id="c803cf4eb4cbf3a6b12b1e1cc3443970" category="section-title">MPIO设置</block>
   <block id="6a56526090ecb77854d07be849799242" category="paragraph">MPIO设置定义NetApp存储系统的首选路径。它们可确定哪些可用路径已进行优化(与遍历互连缆线的非优化路径不同)、并将首选路径设置为其中一个路径。</block>
@@ -705,19 +700,13 @@
   <block id="89f7633ad6a1e114cebf9902aa42fd5c" category="paragraph">NFS vStorage API for Array Integration (NFS VAAI)插件是一个软件组件、用于集成VMware vSphere和NFS存储阵列。使用适用于VMware vSphere的ONTAP工具安装NFS VAAI插件、以利用NFS存储阵列的高级功能将某些与存储相关的操作从ESXi主机卸载到存储阵列本身。</block>
   <block id="bf25ac3fc5bee2b3ec36e32661767682" category="inline-link">适用于 VMware VAAI 的 NetApp NFS 插件</block>
   <block id="f9fcb823ee6471ecceb63c9625d2c8fc" category="list-text">下载<block ref="e6fae45561f1786d6f3534aff65b3377" category="inline-link-rx"></block>安装包。</block>
-  <block id="e27bb3e78ef59cd560e56215a182f3b3" category="list-text">确保ESXi主机已安装最新修补程序7.0U3或更高版本以及9.14.1 9.14.1或更高版本。</block>
   <block id="a585389d21dd9fbdbdc15072bd5d7010" category="list-text">挂载NFS数据存储库。</block>
-  <block id="3efe2db5c0b83bc2774d6061359381ed" category="list-text">将DataMover.HardwareAcceleratedMove、DataMover.HardwareAcceleratedInit和VMFS3.HardwareAcceleratedLocking主机设置的值设置为"1"。要自动设置这些值、请应用建议的EXSi主机设置。请参阅 <block ref="a13757a488cc72436349db8983ce6613" category="inline-link-macro-rx"></block>。</block>
-  <block id="957daa20d20cf15a7839d7e44ecdb2ab" category="list-text">使用vserver NFS修改-vserver vserver_name -vStorage enabled命令在Storage Virtual Machine (SVM)上启用vStorage选项。</block>
-  <block id="d5676260c3a3d58c4d9ebd79f3558bac" category="list-text">确保您已安装vSphere 7.0U3最新的修补程序版本。</block>
-  <block id="ebfe914a124eb1ec0cc1d8f6d6c420cb" category="list-text">NetApp NFS VAAI插件2.0.1 (内部版本16)支持vSphere 8.x。</block>
   <block id="dbf218ab7bc36005b7fdd93dda1f6eda" category="list-text">选择插件部分下的*快捷方式*&gt;* NetApp ONTAP tools*。</block>
   <block id="0e57b7b27807ae2427ad1a654eca765e" category="list-text">选择*Settings*&gt;*NFS VAAI Tools*。</block>
   <block id="42e4695fefd280ddc3a6f11124586510" category="list-text">将VAAI插件上传到vCenter Server后、在*现有版本*部分中选择*更改*。如果VAAI插件未上传到vCenter Server、请选择*上传*按钮。</block>
   <block id="0aa364b40943456fe1d59c4a4a6ee32d" category="list-text">浏览并选择<block ref="74f7b54ea713d9f5b69839982911bbf7" prefix=" " category="inline-code"></block>文件，然后选择*Upload*将文件上传到ONTAP工具。</block>
   <block id="75650b415bb2c723c71117c59992e489" category="list-text">选择*在ESXi主机上安装*、选择要安装NFS VAAI插件的ESXi主机、然后选择*安装*。</block>
   <block id="681ca77b2652713f7e6d867f281733ec" category="paragraph">仅显示符合此插件安装条件的ESXi主机。您可以在vSphere Web Client的近期任务部分中监控安装进度。</block>
-  <block id="4969bf5d68bb071342161a9b29a23f5c" category="list-text">安装完成后、您应手动重新启动ESXi主机。</block>
   <block id="d15e664257aa2207434ef9543a593a8d" category="paragraph">当VMware管理员重新启动ESXi主机时、适用于VMware vSphere的ONTAP工具会自动检测并启用NFS VAAI插件。</block>
   <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">下一步是什么？</block>
   <block id="90ba1578c2c367413063e7228d8586b5" category="paragraph">安装NFS VAAI插件并重新启动ESXi主机后、您需要为VAAI副本卸载配置正确的NFS导出策略。在NFS环境中配置VAAI时、请根据以下要求配置导出策略规则：</block>
@@ -2171,4 +2160,7 @@
   <block id="76dc960090031506bd84c78f38fe040e" category="paragraph">升级后、如果虚拟机的合规性状态已过时、请按照以下步骤重新应用存储策略：</block>
   <block id="0f4e59ab0634b5a1f97823bc94b0f039" category="paragraph">VM存储策略兼容性*下的兼容性状态显示为*过时*。</block>
   <block id="3e771c8c630b8cfd1ddd0dfc7e8e7c85" category="list-text"><block ref="3e771c8c630b8cfd1ddd0dfc7e8e7c85" category="inline-link-macro-rx"></block></block>
+  <block id="395ddb6ca1b9948e32145f8fa1a9201e" category="paragraph">将以下参数设置为默认值：</block>
+  <block id="0882ef7c28701c98bdd62f72da8634a7" category="list-text">确保已安装ESXi主机和vSphere 7.0U3最新修补程序或更高版本以及9.14.1 9.14.1或更高版本。</block>
+  <block id="2bf603021962a26e3bcb2bea93110c9f" category="list-text">安装后手动重新启动ESXi主机。</block>
 </blocks>
