@@ -11,7 +11,7 @@ summary: 将vCenter Server实例添加到适用于VMware vSphere的ONTAP工具�
 
 
 [role="lead"]
-将vCenter Server实例添加到适用于VMware vSphere的ONTAP工具中、以配置、管理和保护vCenter Server环境中的虚拟数据存储库。
+将vCenter Server实例添加到适用于VMware vSphere的ONTAP工具中、以配置、管理和保护vCenter Server环境中的虚拟数据存储库。添加多个 vCenter Server 实例时，需要自定义 CA 证书才能在 ONTAP 工具和每个 vCenter Server 之间进行安全通信。
 
 * 关于此任务 *
 

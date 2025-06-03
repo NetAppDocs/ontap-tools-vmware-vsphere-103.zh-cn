@@ -11,7 +11,7 @@ summary: 您可以使用适用于VMware vSphere的ONTAP工具远程插件界面�
 
 
 [role="lead"]
-您可以使用适用于VMware vSphere的ONTAP工具向vCenter Server实例注册VASA Provider。VASA Provider设置部分显示选定vCenter Server的VASA Provider注册状态。
+您可以使用适用于VMware vSphere的ONTAP工具向vCenter Server实例注册VASA Provider。VASA Provider设置部分显示选定vCenter Server的VASA Provider注册状态。在多 vCenter 部署中，确保每个 vCenter Server 实例都有自定义 CA 证书。
 
 .步骤
 . 登录到vSphere Client

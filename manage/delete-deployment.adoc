@@ -14,7 +14,7 @@ summary: 删除适用于VMware vSphere部署的ONTAP工具后、您应清理在�
 如果将专用ONTAP集群用于ONTAP工具以进行VMware部署、则会创建许多未使用的FlexVol卷。删除适用于VMware vSphere的ONTAP工具后、您应删除FlexVol卷、以避免可能对性能造成的影响。
 
 .步骤
-. 从主节点虚拟机确定适用于VMware vSphere的ONTAP工具的部署类型。
+. 从第一个节点虚拟机确定适用于 VMware vSphere 部署类型的 ONTAP 工具。
 +
 _cat /opt/NetApp/meta/Ansend_vars.yaml | gep -i protocol
 

@@ -60,10 +60,10 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 | 要求 | 您的价值 
 
 
-| ONTAP工具应用程序的IP地址 |  
+| ONTAP 工具应用程序的 IP 地址。这是用于访问 ONTAP 工具 Web 界面的 IP 地址 |  
 
 
-| 用于内部通信的节点互连IP地址 |  
+| 用于内部通信的 ONTAP 工具虚拟 IP 地址。此 IP 地址用于在包含多个 ONTAP 工具实例的设置中进行内部通信。此 IP 地址不应与 ONTAP 工具应用程序的 IP 地址相同。 |  
 
 
 | 第一个节点的DNS主机名 |  
@@ -78,7 +78,7 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 | DNS搜索域 |  
 
 
-| 主节点的IPv4地址 |  
+| 第一个节点的 IPv4 地址。它是管理网络上节点管理接口的唯一 IPv4 地址。 |  
 
 
 | IPv4地址的子网掩码 |  
