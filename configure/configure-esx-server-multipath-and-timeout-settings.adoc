@@ -67,6 +67,9 @@ MPIO设置定义NetApp存储系统的首选路径。它们可确定哪些可用�
 在高性能环境中、或者在测试单个LUN数据存储库的性能时、请考虑将轮询(VMW_PSP_RR)路径选择策略(PSP)的负载平衡设置从默认IOPS设置1000更改为值1。
 
 
+NOTE: MPIO 设置不适用于 NVMe、NVMe/FC 和 NVMe/TCP 协议。
+
+
 
 === NFS 设置
 
