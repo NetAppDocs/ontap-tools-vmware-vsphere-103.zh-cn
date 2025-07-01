@@ -4,208 +4,26 @@ sidebar: sidebar
 keywords: migrate 
 summary: 迁移存储数据时、系统会使用REST API手动启用存储后端。迁移VASA Provider数据时、数据会从现有Derby数据库导出并导入到MongoDB数据库中。 
 ---
-= 从适用于VMware vSphere 9.x的ONTAP工具迁移到10.3
+= 从适用于VMware vSphere 9.xx的ONTAP工具迁移到10.3
 :allow-uri-read: 
 :icons: font
 :imagesdir: ../media/
 
 
 [role="lead"]
-在存储数据迁移期间、系统会使用REST API手动建立存储后端。VASA Provider数据迁移涉及从现有Derby数据库导出数据并将其导入MongoDB数据库。
-
-
-NOTE: 只有在使用VASA Provider和vvol时、才需要从适用于VMware vSphere 9.XX的ONTAP工具进行迁移。
-
-
-NOTE: 从适用于VMware vSphere的ONTAP工具9.x迁移到10.3之后、采用NVMe/FC协议的vvol数据存储库将无法工作、因为ONTAP工具10.3仅支持对VMFS数据存储库使用NVMe-oF。
-
-* 关于此任务 *
+将适用于 VMware vSphere 设置的 NetApp ONTAP 工具从 9.xx 版迁移到 10.x 版需要执行迁移过程，因为跨版本的产品更新和增强功能十分重要。
 
 您可以从适用于VMware vSphere 9.12D1和9.13D2的ONTAP工具迁移到10.3版。
 
+如果您的设置中包含 NFS 和 VMFS 数据存储，而没有 vVols 数据存储，则只需卸载 ONTAP 工具 9.xx 并部署 ONTAP 工具 10.x 即可。但是，如果您的设置包含 vVols 数据存储，则必须执行 VASA 提供程序和 SRA 的迁移过程。
 
-NOTE: 在升级到修补程序版本之前、您必须从当前版本创建OVA备份。
-
-
-
-== 常见迁移步骤
-
-. 部署适用于VMware vSphere 10.3版的ONTAP工具的OVA。
-. 添加要迁移到适用于VMware vSphere 10.3版的ONTAP工具的vCenter Server实例。请参阅link:../configure/add-vcenter.html["添加vCenter Server实例"]。
-. 使用vCenter Server上的ONTAP工具插件在本地板载存储后端。将此存储添加为本地范围的存储以进行迁移。
-
-
-
-
-== SRA迁移步骤
-
-* 开始之前 *
-
-迁移前、请确保其中一个站点处于受保护状态、另一个站点处于恢复状态。
-
-
-NOTE: 如果故障转移已完成、但重新保护处于待定状态、请勿开始迁移。请确保重新保护过程已完成、然后再继续迁移。如果正在进行测试故障转移、请清理测试故障转移并开始迁移。
-
-. 请按照以下步骤在VMware站点恢复中删除适用于VMware vSphere 9.xx的ONTAP工具SRA适配器：
-+
-.. 转到VMware Live Site Recovery配置管理页面
-.. 转到*Storage Replication Adapter*部分。
-.. 从省略号菜单中，选择*Reset configuration*。
-.. 从省略号菜单中选择*Delete*。
-
-
-. 在保护站点和恢复站点上执行这些步骤。
-+
-.. 按照中的步骤安装适用于VMware vSphere 10.3 SRA适配器的ONTAP工具link:../protect/configure-on-srm-appliance.html["在VMware Live Site Recovery设备上配置SRA"]。
-.. 在VMware Live Site Recovery用户界面页面上，执行*Discover Arrays (发现阵列)*和*Discover Devices*(发现设备)操作，并确认这些设备在迁移前显示为。
-
-
-
-
-
-
-== VASA Provider迁移步骤
-
-. 要在适用于VMware vSphere的现有ONTAP工具上启用Derby端口1527、请启用root用户并通过SSH登录到命令行界面。然后、运行以下命令：
-+
-[listing]
-----
-iptables -I INPUT 1 -p tcp --dport 1527 -j ACCEPT
-----
-. 部署适用于VMware vSphere 10.3的ONTAP工具OVA。
-. 添加要迁移到适用于VMware vSphere 10.3版的ONTAP工具的vCenter Server实例。请参阅。 link:../configure/add-vcenter.html["添加vCenter Server实例"]
-. 从远程插件vCenter Server API本地板载存储后端。将存储添加为本地范围以进行迁移。
-. 从Swagger或Postman发出以下API进行迁移。
-+
-CURL -X柱 https://xx.xx.xx.xx:8443/virtualization/api/v1/vcenters/{vcguid}/migration[]
-
-+
-您可以通过以下URL访问Swagger：`https://$FQDN_IP_PORT/,例如： https://10.61.25.33:8443/[]。
-
-+
-[]
-====
-*HTTP方法和端点*
-
-此REST API调用使用以下方法和端点。
+下表概述了这两种不同场景下的迁移过程。
 
 |===
+| *如果设置有 vVols 数据存储* | *如果设置仅包含 NFS 和 VMFS 数据存储* 
 
 
-| * HTTP 方法 * | * 路径 * 
-
-
-| 发布 | /api/v1 
-|===
-*处理类型*
-
-异步
-
-*卷示例*
-
-CURL -X柱 https://xx.xx.xx.xx:8443/virtualization/api/v1/vcenters/{vcguid}/migration-jobs[]
-
-*JSON输入示例*
-
-从9.12和9.13迁移的请求正文：
-
-{"OTV_IP"："10.12.13.45"、"VASA提供程序凭据"：{"USERNAME"："vasauser"、"password"："*********｝"DATABASE密码"："*********”}
-
-其他版本迁移的请求正文：
-
-{"OTV_IP"："10.12.13.45"、"VASA提供程序凭据"：{"USERNAME":"vasauser"、"password"*********}
-
-*JSON输出示例*
-
-返回作业对象。您应保存作业标识符、以便在下一步中使用。
-
-｛"id"：123、"migration_id"：d50073ce-35b4-4c51-9d2e-4ce66f802c35"、"stats"："running"｝
-
-====
-. 在Swagger中使用以下URI检查状态：
-+
-[listing]
-----
-curl https://xx.xx.xx.xxx:8443/virtualization/api/jobmanager/v2/jobs/<JobID>?includeSubJobsAndTasks=true
-----
-+
-完成此作业后、请查看迁移报告。此报告包含在作业数据中、可从作业响应访问。
-
-. 将适用于VMware vSphere的ONTAP工具存储提供程序添加到vCenter Server中、并使用适用于VMware vSphere的ONTAP工具进行添加link:../configure/registration-process.html["注册VASA Provider"]。
-. link:../manage/enable-services.html["启用 VASA Provider"]适用于VMware vSphere 10.3的ONTAP工具上的服务。
-. 从维护控制台停止适用于VMware vSphere存储提供程序9.10/9.11/9.12/9.13的ONTAP工具VASA Provider服务。
-+
-请勿删除VASA Provider。
-
-+
-停止旧的VASA Provider后、vCenter Server将故障转移到适用于VMware vSphere的ONTAP工具。所有数据存储库和VM均可通过适用于VMware vSphere的ONTAP工具访问和提供服务。
-
-. 只有在触发数据存储库发现作业后、适用于VMware vSphere 9.xx的ONTAP ONTAP工具中才会显示从适用于VMware vSphere的NFS和VMFS数据存储库、此作业可能需要长达30分钟才能完成。验证这些数据存储库是否显示在VMware vSphere插件用户界面的ONTAP工具的概述页面上。
-. 在Swagger或Postman中使用以下API执行修补程序迁移：
-+
-[]
-====
-*HTTP方法和端点*
-
-此REST API调用使用以下方法和端点。
-
+| 步骤：1.link:../migrate/sra-vasa-migration.html["迁移 VASA 提供程序"] 2.  https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/storage-policy-based-management-in-vsphere/creating-and-managing-vsphere-storage-policies.html["创建虚拟机存储策略"] | 步骤：1.从您的环境中删除 ONTAP 工具 9.xx。请参阅 https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/OTV_How_to_remove_OTV_9_12_from_your_environment["如何从您的环境中删除 OTV 9.xx"] NetApp 知识库文章。2.link:../deploy/quick-start.html["为 VMware vSphere 10.3 部署和配置 ONTAP 工具"] 3.link:../migrate/sra-vasa-migration.html["更新 SRA"] 4.  https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/storage-policy-based-management-in-vsphere/creating-and-managing-vsphere-storage-policies.html["创建虚拟机存储策略"] 
 |===
 
-
-| * HTTP 方法 * | * 路径 * 
-
-
-| patch | /api/v1 
-|===
-*处理类型*
-
-异步
-
-*卷示例*
-
-CURL -X修补程序 https://xx.xx.xx.xx:8443/virtualization/api/v1/vcenters/56d373bd-4163-44f9-a872-9adabb008ca9/migration-jobs/84dr73bd-9173-65r7-w345-8ufdbb887d43[]
-
-*JSON输入示例*
-
-｛"id"：123、"migration_id"：d50073ce-35b4-4c51-9d2e-4ce66f802c35"、"stats"："running"｝
-
-*JSON输出示例*
-
-返回作业对象。您应保存作业标识符、以便在下一步中使用。
-
-｛"id"：123、"migration_id"：d50073ce-35b4-4c51-9d2e-4ce66f802c35"、"stats"："running"｝
-
-修补操作的请求正文为空。
-
-
-NOTE: UUID是为响应迁移后API而返回的迁移UUID。
-
-运行修补程序迁移API后、所有VM都会遵守存储策略。
-
-====
-
-
-.下一步行动
-完成向vCenter Server迁移和注册ONTAP工具10.3后、请按照以下步骤进行操作：
-
-* 等待*Discovery *完成，所有主机上的证书将自动刷新。
-* 在启动数据存储库和虚拟机操作之前、请留出足够的时间。所需等待时间因配置中的主机、数据存储库和虚拟机数量而异。等待失败可能会导致间歇性操作故障。
-
-
-升级后、如果虚拟机的合规性状态已过时、请按照以下步骤重新应用存储策略：
-
-. 导航到数据存储库并选择*摘要*>*虚拟机存储策略*。
-+
-VM存储策略兼容性*下的兼容性状态显示为*过时*。
-
-. 选择Storage VM策略和相应的VM
-. 选择*应用*
-+
-现在，“VM storage policy Compliance”(VM存储策略合规性)下的合规状态将显示为“Compliance”(合规)。
-
-
-
-.相关信息
-* link:../concepts/rbac-learn-about.html["了解适用于VMware vSphere 10 RBAC的ONTAP工具"]
-* link:../upgrade/upgrade-ontap-tools.html["从适用于VMware vSphere 10.x的ONTAP工具升级到10.3"]
-
+NOTE: 从适用于VMware vSphere的ONTAP工具9.xx迁移到10.3后、使用NVMe/FC协议的vvol数据存储库将无法运行、因为ONTAP工具10.3仅对VMFS数据存储库支持NVMe-oF协议。

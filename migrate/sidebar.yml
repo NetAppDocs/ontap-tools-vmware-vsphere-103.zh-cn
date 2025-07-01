@@ -1,4 +1,8 @@
 ---
 section: migrate
-title: 将适用于VMware vSphere 9.x的ONTAP工具迁移到10.3
-url: "/migrate/migrate-to-latest-ontaptools.html"
+title: 将适用于VMware vSphere 9.xx的ONTAP工具迁移到10.3
+entries:
+- title: 迁移到适用于 VMware vSphere 的最新 ONTAP 工具
+  url: "/migrate/migrate-to-latest-ontaptools.html"
+- title: 迁移 VASA 提供程序并更新 SRA
+  url: "/migrate/sra-vasa-migration.html"

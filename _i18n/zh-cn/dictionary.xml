@@ -1618,20 +1618,10 @@
   <block id="6d710894cd1d83594944bdb2f558f3dd" category="paragraph">您可以使用"管理列"选项隐藏或显示不同的列。</block>
   <block id="c46965d55afff0a89c0bb3bd26c0a653" category="summary">迁移存储数据时、系统会使用REST API手动启用存储后端。迁移VASA Provider数据时、数据会从现有Derby数据库导出并导入到MongoDB数据库中。</block>
   <block id="e43b5fd407b2bc9fda1a39851a48f9bb" category="doc">从适用于VMware vSphere 9.x的ONTAP工具迁移到10.3</block>
-  <block id="656a2ce4c62bd399a29a0cc087a7eb83" category="admonition">从适用于VMware vSphere的ONTAP工具9.x迁移到10.3之后、采用NVMe/FC协议的vvol数据存储库将无法工作、因为ONTAP工具10.3仅支持对VMFS数据存储库使用NVMe-oF。</block>
   <block id="f9f52fdfc3b658d087ef0d1715cc2008" category="paragraph">您可以从适用于VMware vSphere 9.12D1和9.13D2的ONTAP工具迁移到10.3版。</block>
-  <block id="12f864a7f79090b1b0f169109899eb43" category="admonition">在升级到修补程序版本之前、您必须从当前版本创建OVA备份。</block>
-  <block id="135dda3ac3096b9bd31ceb04b513c216" category="section-title">常见迁移步骤</block>
-  <block id="e53a5f7966ebf538ff3fbae3277020fa" category="list-text">添加要迁移到适用于VMware vSphere 10.3版的ONTAP工具的vCenter Server实例。请参阅<block ref="fbc3413db4202f1fe331f16af6b38f13" category="inline-link-macro-rx"></block>。</block>
-  <block id="a556515aafd07bfe4c2dfa6abbaa4ccb" category="section-title">SRA迁移步骤</block>
-  <block id="b4c20aabb2d8056ffe9e2b60a0164bf2" category="paragraph">迁移前、请确保其中一个站点处于受保护状态、另一个站点处于恢复状态。</block>
-  <block id="de7cd16aa682868ad900edd519b06059" category="list-text">转到VMware Live Site Recovery配置管理页面</block>
   <block id="77efba168b5a2059c2d20a1e2673f5d1" category="paragraph">在保护站点和恢复站点上执行这些步骤。</block>
-  <block id="b7b423b5e37e418ae4659bcf83c729b5" category="section-title">VASA Provider迁移步骤</block>
   <block id="fdb5b6876d97a075f0bc2a07cd4be907" category="list-text">部署适用于VMware vSphere 10.3的ONTAP工具OVA。</block>
   <block id="a8534b379980a6bb97915d2890ad3522" category="inline-link-macro">添加vCenter Server实例</block>
-  <block id="34b17f133cdce8c13fd8b812b8c11211" category="list-text">添加要迁移到适用于VMware vSphere 10.3版的ONTAP工具的vCenter Server实例。请参阅。 <block ref="946669e64e0e42585f18099dec81ec03" category="inline-link-macro-rx"></block></block>
-  <block id="1c9a04fa9475b21ef9be5e7bd0f30822" category="list-text">从远程插件vCenter Server API本地板载存储后端。将存储添加为本地范围以进行迁移。</block>
   <block id="4b2e39d58448cd6246edaab6e2789245" category="paragraph">*HTTP方法和端点*</block>
   <block id="0b0231c1815d06ad4701a091ce91a740" category="paragraph">此REST API调用使用以下方法和端点。</block>
   <block id="d40e9450da0b47980b8d20417aa05da7" category="cell">* HTTP 方法 *</block>
@@ -1640,16 +1630,13 @@
   <block id="b46b241331d5bfe90afd25ec36605c07" category="paragraph">*处理类型*</block>
   <block id="288aae25bc408055f50c21c991903a44" category="paragraph">异步</block>
   <block id="a62fbfbe1fa2fbcd3ff1ab71d9f0cf7a" category="paragraph">*卷示例*</block>
-  <block id="80e56be2a784c57e6087b3af6db66ad9" category="paragraph">{"OTV_IP"："10.12.13.45"、"VASA提供程序凭据"：{"USERNAME"："vasauser"、"password"："*********｝"DATABASE密码"："*********”}</block>
   <block id="654a9186fe9a47c1397903b9228f2c36" category="paragraph">其他版本迁移的请求正文：</block>
-  <block id="5cda9daf0baf81a9f615b94e32abb4a8" category="paragraph">{"OTV_IP"："10.12.13.45"、"VASA提供程序凭据"：{"USERNAME":"vasauser"、"password"*********}</block>
   <block id="18009c9216d59118fb460184e2ec0a3d" category="paragraph">*JSON输出示例*</block>
   <block id="492fdcd87814cf3c979a27709fc29350" category="paragraph">返回作业对象。您应保存作业标识符、以便在下一步中使用。</block>
   <block id="372ff7cae2da4e0d6205af97a48a61eb" category="paragraph">｛"id"：123、"migration_id"：d50073ce-35b4-4c51-9d2e-4ce66f802c35"、"stats"："running"｝</block>
   <block id="009dbe214d15197679fe0b95a8a01cc3" category="list-text">从维护控制台停止适用于VMware vSphere存储提供程序9.10/9.11/9.12/9.13的ONTAP工具VASA Provider服务。</block>
   <block id="ffdec42d5d13cecca850e153f75748ec" category="paragraph">请勿删除VASA Provider。</block>
   <block id="4bf6186a3a16efffdaebdafdd4fcaf4b" category="paragraph">停止旧的VASA Provider后、vCenter Server将故障转移到适用于VMware vSphere的ONTAP工具。所有数据存储库和VM均可通过适用于VMware vSphere的ONTAP工具访问和提供服务。</block>
-  <block id="bdfee7ad87d9004e1091e6e1762d0e84" category="paragraph">*JSON输入示例*</block>
   <block id="f663ec26fcc5dbf0e82a2df73c30a3e3" category="paragraph">修补操作的请求正文为空。</block>
   <block id="15e560ab707fa2bf2b7b0833adbe8bb9" category="list-text">导航到数据存储库并选择*摘要*&gt;*虚拟机存储策略*。</block>
   <block id="325367fe0120f7c1592bf3028da84bee" category="list-text">选择Storage VM策略和相应的VM</block>
@@ -2103,7 +2090,6 @@
   <block id="ce0ce3ea98d033e77751261b2720fefe" category="sidebar">管理密码</block>
   <block id="b380edc36b1ed383fd72d0b93d5857c5" category="sidebar">管理主机集群保护</block>
   <block id="430cbe0d7261af556b6d05cea5b38e0e" category="sidebar">修改主机集群保护</block>
-  <block id="9ebcd4f583a00c985808cafa9e416f71" category="sidebar">将适用于VMware vSphere 9.x的ONTAP工具迁移到10.3</block>
   <block id="f724dfae8a2bb3b34e049dcedf88d10d" category="sidebar">保护数据存储库和虚拟机</block>
   <block id="d8ddfdd9298e5862ca00168195c4be29" category="sidebar">使用SRA保护进行保护</block>
   <block id="a239701adb72159a71164b036c18a53a" category="sidebar">配置受保护站点和恢复站点资源</block>
@@ -2117,30 +2103,20 @@
   <block id="7ffde475c4ea55e9fc7c8c11becbc141" category="paragraph">如果在多租户设置中、vCenter充当关联SVM的租户、请使用ONTAP工具管理器添加集群。将存储后端与vCenter Server相关联、以便将其全局映射到已登录的vCenter Server实例。vCenter租户必须载入所需的Storage Virtual Machine (SVM)。这样、SVM用户便可配置Vvol数据存储库。您可以使用SVM在vCenter中添加存储。</block>
   <block id="112fa4a14bcd73096ce0a79df18e90c8" category="admonition">通过vSphere客户端用户界面配置存储后端时、请务必注意、Vvol数据存储库不支持直接添加SVM用户。</block>
   <block id="cbc2b2dc8b4ce185c5ef0381522a3cfc" category="admonition">您不需要管理员帐户即可将vCenter实例添加到ONTAP工具。您可以创建自定义角色、而无需具有有限权限的管理员帐户。有关详细信息、请参见 <block ref="31ec071db09c0fa81e221bfe3044a965" category="inline-link-macro-rx"></block> 。</block>
-  <block id="a9919517205886b598c13e9032a09059" category="paragraph">在存储数据迁移期间、系统会使用REST API手动建立存储后端。VASA Provider数据迁移涉及从现有Derby数据库导出数据并将其导入MongoDB数据库。</block>
-  <block id="b7760802f5560cd215cd7dee93951bfd" category="admonition">只有在使用VASA Provider和vvol时、才需要从适用于VMware vSphere 9.XX的ONTAP工具进行迁移。</block>
-  <block id="3b399f32cd58f37d5c326f406d9b291f" category="list-text">部署适用于VMware vSphere 10.3版的ONTAP工具的OVA。</block>
-  <block id="7949ac5c6b3d4313dd4d5969af832925" category="list-text">使用vCenter Server上的ONTAP工具插件在本地板载存储后端。将此存储添加为本地范围的存储以进行迁移。</block>
   <block id="46ec37b71ccf8c993dcbf7cb78fe2af7" category="admonition">如果故障转移已完成、但重新保护处于待定状态、请勿开始迁移。请确保重新保护过程已完成、然后再继续迁移。如果正在进行测试故障转移、请清理测试故障转移并开始迁移。</block>
   <block id="da2f48d729eae4ca1010b4a077b66b02" category="list-text">请按照以下步骤在VMware站点恢复中删除适用于VMware vSphere 9.xx的ONTAP工具SRA适配器：</block>
   <block id="b2c26a87d051d5889e6d2e4ab1fc79de" category="list-text">转到*Storage Replication Adapter*部分。</block>
-  <block id="b80a5fe26546f4090c014df2108347ab" category="list-text">从省略号菜单中，选择*Reset configuration*。</block>
   <block id="1ab7bd22ce5077185a70517ea0db34ec" category="list-text">从省略号菜单中选择*Delete*。</block>
   <block id="108af0df3d39dcc8f1002f2564a37e20" category="list-text">按照中的步骤安装适用于VMware vSphere 10.3 SRA适配器的ONTAP工具<block ref="9b6610ae0d9b3f2df042445cc8433cf4" category="inline-link-macro-rx"></block>。</block>
   <block id="e3e32085ef48d00b185f9ae05a428520" category="list-text">在VMware Live Site Recovery用户界面页面上，执行*Discover Arrays (发现阵列)*和*Discover Devices*(发现设备)操作，并确认这些设备在迁移前显示为。</block>
   <block id="6136a81a0ac0e402d6b510c2488f1d36" category="list-text">要在适用于VMware vSphere的现有ONTAP工具上启用Derby端口1527、请启用root用户并通过SSH登录到命令行界面。然后、运行以下命令：</block>
   <block id="b5bf1eb9fc501e53457cde004db09086" category="list-text">从Swagger或Postman发出以下API进行迁移。</block>
-  <block id="45b4835ddd7ad16076afa0b51bf12d2a" category="paragraph">CURL -X柱<block ref="a9f22201e72a1b8e399b24ae5e861616" category="inline-link-rx"></block></block>
-  <block id="d15764d5088db3a571ec9ccf86341552" category="paragraph">您可以通过以下URL访问Swagger：`https://$FQDN_IP_PORT/,例如：<block ref="1f852f41a6044590b385b39eaef5531e" category="inline-link-rx"></block>。</block>
   <block id="54caf31d7246402cdcb6cd5c255c5c64" category="paragraph">CURL -X柱<block ref="4042f1acb8fe47ca556f8b938a8d6e08" category="inline-link-rx"></block></block>
-  <block id="40e0776d71fd5d591d53e451a6006fa9" category="paragraph">从9.12和9.13迁移的请求正文：</block>
   <block id="91377d2edc3d930017c1b8c4679bdb89" category="list-text">在Swagger中使用以下URI检查状态：</block>
   <block id="b02dd8a7793406878f54951af581d6f2" category="paragraph">完成此作业后、请查看迁移报告。此报告包含在作业数据中、可从作业响应访问。</block>
   <block id="4551975cd29f0bfb98cd73d6f5cb8388" category="inline-link-macro">注册VASA Provider</block>
-  <block id="0edd46e4487a559e489864eebe825e64" category="list-text">将适用于VMware vSphere的ONTAP工具存储提供程序添加到vCenter Server中、并使用适用于VMware vSphere的ONTAP工具进行添加<block ref="c283b8bc021fee7e6c856fce39783a46" category="inline-link-macro-rx"></block>。</block>
   <block id="588348e2b65e0439aeb5d92799e13781" category="inline-link-macro">启用 VASA Provider</block>
   <block id="afba674b121ae477fe8d69c9920021ef" category="list-text"><block ref="3f0f412beb77bd4bc4dc7f97f661a149" category="inline-link-macro-rx"></block>适用于VMware vSphere 10.3的ONTAP工具上的服务。</block>
-  <block id="43278c46500368f0b18a81d5a9eabd6c" category="list-text">只有在触发数据存储库发现作业后、适用于VMware vSphere 9.xx的ONTAP ONTAP工具中才会显示从适用于VMware vSphere的NFS和VMFS数据存储库、此作业可能需要长达30分钟才能完成。验证这些数据存储库是否显示在VMware vSphere插件用户界面的ONTAP工具的概述页面上。</block>
   <block id="96b2fedcc932770f843418dedfe7f004" category="list-text">在Swagger或Postman中使用以下API执行修补程序迁移：</block>
   <block id="99a490d727b23ee47f3b441a7342d420" category="paragraph">CURL -X修补程序<block ref="fd07e34d045cf59e25acb7168e60f530" category="inline-link-rx"></block></block>
   <block id="84a75f6b0a005e405f2680d9ab007b12" category="admonition">UUID是为响应迁移后API而返回的迁移UUID。</block>
@@ -2165,4 +2141,131 @@
   <block id="15f0aef685a07d8a64ee213328fd4abf" category="list-text">从第一个节点虚拟机确定适用于 VMware vSphere 部署类型的 ONTAP 工具。</block>
   <block id="843e69439f5c77bf5c54644b48190fc1" category="admonition">对于用于 VMware vSphere HA 部署的 ONTAP 工具，您应该更改第一个节点（即 node1）上的维护控制台用户密码。</block>
   <block id="56564ecb20e9cb45429b432b22f216f4" category="admonition">MPIO 设置不适用于 NVMe、NVMe/FC 和 NVMe/TCP 协议。</block>
+  <block id="d12f6b7d9e336bb21523e27a7954a424" category="doc">了解适用于 VMware vSphere 的 ONTAP 工具中的 igroup 和导出策略</block>
+  <block id="27fa3073e12d15edf2d9cd750cf92bd4" category="paragraph">启动器组 (igroup) 是包含 FC 协议主机全球端口名称 (WWPN) 或 iSCSI 主机限定节点名称的表。您可以定义 igroup 并将其映射到 LUN，以控制哪些启动器有权访问 LUN。</block>
+  <block id="138a039e4dddf6a33f72d3080556a984" category="paragraph">在适用于 VMware vSphere 9.x 的 ONTAP 工具中，igroup 是在扁平结构中创建和管理的，其中 vCenter 中的每个数据存储库都与单个 igroup 关联。这种模型限制了 igroup 在多个数据存储库之间的灵活性和重用性。适用于 VMware vSphere 10.x 的 ONTAP 工具引入了嵌套 igroup，其中 vCenter 中的每个数据存储库都与一个父 igroup 关联，而每个主机都链接到该父 igroup 下的子 igroup。您可以使用用户定义的名称定义自定义父 igroup，以便在多个数据存储库之间重用，从而实现更灵活、更互联的 igroup 管理。了解 igroup 工作流对于在适用于 VMware vSphere 的 ONTAP 工具中有效管理 LUN 和数据存储库至关重要。不同的工作流会生成不同的 igroup 配置，如以下示例所示：</block>
+  <block id="ae993cdc1fd6c1873ab68a1c6ee58ead" category="admonition">上述名称仅供参考，并非真实的 igroup 名称。ONTAP工具管理的 igroup 使用前缀“otv_”。自定义 igroup 可以指定任意名称。</block>
+  <block id="cf5f3091e30dee6597885d8c0e0c357f" category="cell">学期</block>
+  <block id="1b63a2eb7e8a70cf1b8b669bc150e401" category="cell">DS&lt;编号&gt;</block>
+  <block id="8a5227cc82d14862956938caffc1acf2" category="cell">数据存储库</block>
+  <block id="95a16b532fa8ed9188599929af9e5262" category="cell">iqn&lt;数字&gt;</block>
+  <block id="edb0132f304c760893f41c94545adda7" category="cell">启动程序IQN</block>
+  <block id="41ec3b4baa8c2ac4670f3d8b342745f4" category="cell">主机&lt;编号&gt;</block>
+  <block id="eebd7b1ed737a71cd20f07184995f2d6" category="cell">主机 MoRef</block>
+  <block id="94c6c072c97f90138ebb2ee074be8600" category="cell">lun&lt;数字&gt;</block>
+  <block id="77863eecd3628172144d619c2f03fb64" category="cell">LUN ID</block>
+  <block id="b989cbd0eba5a3051041de7edfa979e5" category="cell">&lt;DS名称&gt;Igroup&lt;编号&gt;</block>
+  <block id="d8cba531cf36a19013999be13aebec3a" category="cell">默认（ONTAP 工具管理）父 igroup</block>
+  <block id="3dc1d1c3dce65c0c38318e1ebbcd4dee" category="cell">&lt;Host-Moref&gt;Igroup&lt;编号&gt;</block>
+  <block id="7373da93b05c2b988adcaa5fbf0edfcc" category="cell">儿童组</block>
+  <block id="4bd15973d38707ac9b65aaf3f989ed0f" category="cell">CustomIgroup&lt;number&gt;</block>
+  <block id="a81c9d5d7cdd61b993abfc37eaf551db" category="cell">用户定义的自定义父 igroup</block>
+  <block id="c9addbf487b919c868ba38bce10c0fec" category="cell">ClassicIgroup&lt;编号&gt;</block>
+  <block id="b6c271eb9e2a9392b22e2be5c7aa3614" category="cell">ONTAP 工具 9.x 版本中使用的 Igroup。</block>
+  <block id="0b7b29d7656d8d29ec3286a241de010e" category="paragraph-title">例 1：</block>
+  <block id="f55636419489fc39d90e3b2ec66d66d1" category="paragraph">使用一个启动器在单个主机上创建数据存储</block>
+  <block id="239346122912a11ed5cbb915016a28e3" category="paragraph">*工作流程*：[创建] DS1 (lun1): host1 (iqn1)</block>
+  <block id="184e7557d37448b68814a3826b88604b" category="paragraph">*结果*：</block>
+  <block id="29792d8650120f6afd7c0ece95876b79" category="list-text">DS1I组：</block>
+  <block id="337504141d62bdffc7f0b1a0e1bb16af" category="list-text">host1Igroup → (iqn1:lun1)</block>
+  <block id="71c3f3b14a29b76e7d9976e1fd92866d" category="paragraph">在 ONTAP 系统上为 DS1 创建了一个父 igroup DS1Igroup，并有一个子 igroup host1Igroup 映射到 lun1。LUN始终映射到子 igroup。</block>
+  <block id="2be7ab20c80a99b42fc79400ca3f36ea" category="paragraph-title">例 2：</block>
+  <block id="be3104bc1fff4c1bfb9f5da101aed986" category="paragraph">将现有数据存储挂载到其他主机</block>
+  <block id="835065c40104234c9a8abb4875fbeba8" category="paragraph">*工作流程*：[挂载] DS1 (lun1): host2 (iqn2)</block>
+  <block id="2297adf1ae6c60ea9363ce5ef2e41f52" category="list-text">host2Igroup → (iqn2:lun1)</block>
+  <block id="d2b07c984d7fce344070b5c0752a51d8" category="paragraph">创建子 igroup host2Igroup 并将其添加到现有的父 igroup DS1Igroup。</block>
+  <block id="2d6cceda29fb927297683321657cc7f7" category="paragraph-title">例 3：</block>
+  <block id="6e0ad0300479c496e85c7f90f364f3da" category="paragraph">从主机卸载数据存储</block>
+  <block id="1042a36d4bd6b198c75db206e253d6a1" category="paragraph">*工作流程*：[卸载] DS1 (lun1): host1 (iqn1)</block>
+  <block id="99fb3d64e6243f94e6f41859fd70993d" category="paragraph">host1Igroup 已从层次结构中移除。子 igroup 不会被明确删除。以下两种情况会发生删除：• 如果没有映射任何 LUN，ONTAP 系统将删除子 igroup。• 计划清理作业会移除没有 LUN 映射的悬空子 igroup。这些情况仅适用于 ONTAP 工具管理的 igroup，不适用于自定义创建的 igroup。</block>
+  <block id="041ec4ff6ad5f804da8976d697659842" category="paragraph-title">例 4：</block>
+  <block id="e5e28486c61b67fca6b2ef177a5f9359" category="paragraph">删除数据存储区</block>
+  <block id="4a3642a61d33fc5e86d2b97fb3ec5b26" category="paragraph">*工作流程*：[删除] DS1 (lun1): host2 (iqn2)</block>
+  <block id="a221428f85ab85b50304989ceb5f1013" category="paragraph">如果其他数据存储不重用父 igroup，则父 igroup 和子 igroup 将被移除。子 igroup 永远不会被明确删除</block>
+  <block id="8c0e16266857385b0b0b181e3b641f04" category="paragraph-title">例 5：</block>
+  <block id="726d4f85c9b9eaa5f6c5968d19c3a7df" category="paragraph">在自定义父 igroup 下创建多个数据存储区</block>
+  <block id="bea6104954555c1b763633c7a55ea6f8" category="paragraph">*工作流程*：</block>
+  <block id="19e99edc83cbbbcc6ab8d304178f9046" category="list-text">[创建] DS2（lun2）：host1（iqn1），host2（iqn2）</block>
+  <block id="cb4835be3502172f05fc0fb1636c6f71" category="list-text">[创建] DS3（lun3）：host1（iqn1），host3（iqn3）</block>
+  <block id="1349428cc30cda216cf2019786367f2e" category="list-text">自定义I组1：</block>
+  <block id="da0fa0c3efce4fb609fc503d43009a84" category="list-text">主机 1I 组 → (iqn1: lun2, lun3)</block>
+  <block id="f89b4a662e7511de5794930a38008165" category="list-text">host2Igroup → (iqn2:lun2)</block>
+  <block id="9db51efb0434c0f5d42d43e58d48a6d0" category="list-text">host3Igroup → (iqn3:lun3)</block>
+  <block id="ee0f441220124ad6f5f79f31ca2850c1" category="paragraph">为 DS2 创建 CustomIgroup1，并将其重用于 DS3。在共享父级下创建或更新子 igroup，每个子 igroup 都映射到其相关的 LUN。</block>
+  <block id="a09d3d7fa6e5e57286de75b1ba1b3b81" category="paragraph-title">例 6：</block>
+  <block id="14962f74dc2fca05f3ae890d88732a98" category="paragraph">删除自定义父 igroup 下的数据存储。</block>
+  <block id="e33a694e17ff6619f6b2fe691a1d309a" category="paragraph">*工作流程*：[删除] DS2 (lun2): host1 (iqn1), host2 (iqn2)</block>
+  <block id="67b13646bf72c18d796c8bf3198f5814" category="list-text">host1Igroup → (iqn1:lun3)</block>
+  <block id="6db15a5e6a1d1e2fef5984c15cc5eb69" category="list-text">即使 CustomIgroup1 没有被重复使用，也不会被删除。</block>
+  <block id="382a19507b1950afa51e368afebb5fcc" category="list-text">如果没有映射任何 LUN，则 ONTAP 系统将删除 host2Igroup。</block>
+  <block id="32af8db1601aae83c5ed7e84130e7e2f" category="list-text">host1Igroup 不会被删除，因为它已映射到 DS3 的 lun3。自定义 igroup 永远不会被删除，无论其重用状态如何。</block>
+  <block id="5152900fa2b4fe857b3d0f2bf9c7b1eb" category="paragraph-title">例 7：</block>
+  <block id="96c7142b58bd9e54729ddd088e808dc7" category="paragraph">扩展 vVols 数据存储（添加卷）</block>
+  <block id="d5819bf04d1e61714a844702340b0d01" category="paragraph">扩展前：</block>
+  <block id="4c770faced138366beb0f7a04f395d83" category="paragraph">[展开] DS4 (lun4): host4 (iqn4)</block>
+  <block id="51ebf26e977eb695e06cf1b254d79a30" category="list-text">DS4Igroup:host4Igroup→（iqn4:lun4）</block>
+  <block id="c367cd17021bf2e5e0481fdd6e7ae90b" category="paragraph">扩展后：</block>
+  <block id="6594f9252d2a17fc4bad619de20a7757" category="paragraph">[展开] DS4 (lun4, lun5): host4 (iqn4)</block>
+  <block id="aa5e06dab7f5d9a795d5333805806c5c" category="list-text">DS4Igroup：host4Igroup→（iqn4：lun4，lun5）</block>
+  <block id="a00c0ff3a9039b59496981135459ef0f" category="paragraph">创建一个新的 LUN 并将其映射到现有的子 igroup host4Igroup。</block>
+  <block id="d8b6441496bad3b41e04f590687e0880" category="paragraph-title">例 8：</block>
+  <block id="9e8052e57e1cbe7ffc7f3aed17d3a225" category="paragraph">缩小 vVols 数据存储（删除卷）</block>
+  <block id="a6c4fbf684b02254a93362b7f87f46b3" category="paragraph">收缩前：</block>
+  <block id="392dcdd65448cf07c9c771abcd18cf1d" category="paragraph">[收缩] DS4 (lun4, lun5): host4 (iqn4)</block>
+  <block id="8e16bef4ac0dfac3f3858a459f385130" category="paragraph">收缩后：</block>
+  <block id="32fb6c0701827305127700e83186ed50" category="paragraph">[收缩] DS4 (lun4): host4 (iqn4)</block>
+  <block id="44aac1af9c3e4914e749589a45fb9355" category="paragraph">指定的 LUN (lun5) 已从子 igroup 取消映射。只要该 igroup 至少有一个映射的 LUN，它就会保持活动状态。</block>
+  <block id="04866dfa9cd876e3761fb20cb80cc396" category="paragraph-title">例 9：</block>
+  <block id="40f0d0153abdb5aa1e2c4d8bff1c093e" category="paragraph">从 ONTAP 工具 9 迁移到 10（igroup 规范化）</block>
+  <block id="91d00fcabdddfee3723ef8914e95006a" category="paragraph">适用于 VMware vSPhere 9.x 版本的 ONTAP 工具不支持分层 igroup。在迁移到 10.3 或更高版本期间，必须将 igroup 规范化到分层结构中。</block>
+  <block id="51d52f26bb3fadc49354d8294632607a" category="paragraph">迁移之前：</block>
+  <block id="551fe7e3259b26ff1787acbea836b895" category="paragraph">[迁移] DS6 (lun6, lun7): host6 (iqn6), host7 (iqn7) → ClassicIgroup1 (iqn6 &amp; iqn7: lun6, lun7)</block>
+  <block id="d5d2d4dab88d65ed1d095044810e95c5" category="paragraph">ONTAP 工具 9.x 逻辑允许每个 igroup 有多个启动器，而无需强制一对一主机映射。</block>
+  <block id="e1511f1b44bc4c0e4bf944f12546a9e8" category="paragraph">迁移后：</block>
+  <block id="a7d16c97cdedffae87ecd1f35d0ac590" category="paragraph">[迁移] DS6 (lun6, lun7): host6 (iqn6), host7 (iqn7) → ClassicIgroup1: otv_ClassicIgroup1 (iqn6 &amp; iqn7: lun6, lun7)</block>
+  <block id="d993b7559126972c5320acf14fe956d9" category="paragraph">迁移期间：</block>
+  <block id="8e328318bac6efeb120cc4c6cd3df1e7" category="list-text">创建了一个新的父 igroup (ClassicIgroup1)。</block>
+  <block id="5682831142ad0882b1551736c0a14535" category="list-text">原始 igroup 以 otv_ 前缀重命名并成为子 igroup。</block>
+  <block id="a1d7bef497585c5e3e0761a58c9192df" category="paragraph">这确保符合分层模型。</block>
+  <block id="9d7e0542459b60f98e1d8529e2c87e4e" category="paragraph-title">相关主题</block>
+  <block id="19dea799245ee5cf6e758f51c6b46e67" category="inline-link">关于 igroup</block>
+  <block id="9ec090c0889f67a04d8d16ec3fc894af" category="paragraph"><block ref="9ec090c0889f67a04d8d16ec3fc894af" category="inline-link-rx"></block></block>
+  <block id="bd4308f8ba5f92aa81fb16563206441d" category="section-title">导出策略</block>
+  <block id="483d357ed85943a2600f4700b4234595" category="paragraph">导出策略控制 VMware vSphere ONTAP 工具中对 NFS 数据存储区的访问。它们定义哪些客户端可以访问数据存储区以及它们拥有哪些权限。导出策略在 ONTAP 系统中创建和管理，并可与 NFS 数据存储区关联以强制执行访问控制。每个导出策略都包含一些规则，这些规则指定允许访问的客户端（IP 地址或子网）以及授予的权限（只读或读写）。</block>
+  <block id="df454efba6089b22bf497aa6bdafcce9" category="paragraph">在适用于 VMware vSphere 的 ONTAP 工具中创建 NFS 数据存储库时，您可以选择现有的导出策略或创建新的导出策略。导出策略随后会应用于该数据存储库，确保只有授权的客户端才能访问它。</block>
+  <block id="e25beec793547cce47bd3965725ecdb1" category="paragraph">在新的 ESXi 主机上挂载 NFS 数据存储库时，适用于 VMware vSphere 的 ONTAP 工具会将该主机的 IP 地址添加到与该数据存储库关联的现有导出策略中。这样，新主机无需创建新的导出策略即可访问该数据存储库。</block>
+  <block id="52faf43c83a97dd583b56f8fd4367598" category="paragraph">当您从 ESXi 主机删除或卸载 NFS 数据存储库时，适用于 VMware vSphere 的 ONTAP 工具会从导出策略中删除该主机的 IP 地址。如果没有其他主机正在使用该导出策略，则该策略将被删除。当您删除 NFS 数据存储库时，如果该数据存储库关联的导出策略未被任何其他数据存储库重用，则适用于 VMware vSphere 的 ONTAP 工具会删除该导出策略。如果重用了该导出策略，它将保留主机 IP 地址并保持不变。当您删除数据存储库时，导出策略会取消分配主机 IP 地址并分配默认导出策略，以便 ONTAP 系统可以在需要时访问它们。</block>
+  <block id="064bdf085906b78017207e105ea1456c" category="paragraph">在不同数据存储之间重复使用导出策略时，分配导出策略的方式会有所不同。重复使用导出策略时，您可以将新的主机 IP 地址附加到策略中。删除或卸载使用共享导出策略的数据存储时，该策略不会被删除。它会保持不变，并且主机 IP 地址不会被移除，因为它与其他数据存储共享。不建议重复使用导出策略，因为这可能会导致访问和延迟问题。</block>
+  <block id="bb53c6c29f127a298da7dd86bf00bb89" category="inline-link">创建导出策略</block>
+  <block id="c7196e0d279885126e6f1c8cf1f7195f" category="paragraph"><block ref="c7196e0d279885126e6f1c8cf1f7195f" category="inline-link-rx"></block></block>
+  <block id="81ee8f71716710530978c5d35f28e92b" category="doc">从适用于VMware vSphere 9.xx的ONTAP工具迁移到10.3</block>
+  <block id="188f30594923570222a6f1488e852e69" category="paragraph">将适用于 VMware vSphere 设置的 NetApp ONTAP 工具从 9.xx 版迁移到 10.x 版需要执行迁移过程，因为跨版本的产品更新和增强功能十分重要。</block>
+  <block id="8b6081846f56ef049557c82e5b444e2d" category="paragraph">如果您的设置中包含 NFS 和 VMFS 数据存储，而没有 vVols 数据存储，则只需卸载 ONTAP 工具 9.xx 并部署 ONTAP 工具 10.x 即可。但是，如果您的设置包含 vVols 数据存储，则必须执行 VASA 提供程序和 SRA 的迁移过程。</block>
+  <block id="30725e73463cac6869eb16851a0b7f1f" category="paragraph">下表概述了这两种不同场景下的迁移过程。</block>
+  <block id="481ad82ca4c063eed4e75acc5640a962" category="cell">*如果设置有 vVols 数据存储*</block>
+  <block id="122962cdef914297e7bd27106c4b08ef" category="cell">*如果设置仅包含 NFS 和 VMFS 数据存储*</block>
+  <block id="23582373a176f3a1391b91644579b591" category="inline-link-macro">迁移 VASA 提供程序</block>
+  <block id="6e4d49fbd70ad4839257ed5ced55d275" category="inline-link">创建虚拟机存储策略</block>
+  <block id="56e81eec05ba3edf697b5613dfbb8977" category="cell">步骤：1.<block ref="393201960d4eefccacb06cc7ccdc8cfc" category="inline-link-macro-rx"></block> 2. <block ref="2f4f76d1186f7e1931e429142840bca6" category="inline-link-rx"></block></block>
+  <block id="e07adc488f8e869e6267c0f7a1ccee08" category="inline-link-macro">为 VMware vSphere 10.3 部署和配置 ONTAP 工具</block>
+  <block id="690fca4891ecdd9975fe5dc5bd2a520b" category="inline-link-macro">更新 SRA</block>
+  <block id="ae2e6f54444edfbcea323e8f64be5184" category="inline-link">如何从您的环境中删除 OTV 9.xx</block>
+  <block id="84645f58bac1a3ef293c7f9fa8c6c989" category="cell">步骤：1.从您的环境中删除 ONTAP 工具 9.xx。请参阅<block ref="9bde8c27ff3ba526e74c5e0434eb2686" category="inline-link-rx"></block> NetApp 知识库文章。2.<block ref="ed7f206c59f60e7024e5e58e1da041e1" category="inline-link-macro-rx"></block> 3.<block ref="a29d94f131e388c7ee7c4a56d062be87" category="inline-link-macro-rx"></block> 4. <block ref="2f4f76d1186f7e1931e429142840bca6" category="inline-link-rx"></block></block>
+  <block id="4639c1f094e9032d39d96a62ddb513a1" category="admonition">从适用于VMware vSphere的ONTAP工具9.xx迁移到10.3后、使用NVMe/FC协议的vvol数据存储库将无法运行、因为ONTAP工具10.3仅对VMFS数据存储库支持NVMe-oF协议。</block>
+  <block id="3d73385f16fa6d4daf757e66c8eab31b" category="doc">迁移 VASA 提供程序并更新 SRA</block>
+  <block id="74a0fcc4fbe41d518dabd4de3a069584" category="section-title">迁移 VASA 提供程序的步骤</block>
+  <block id="ca5b5c9d7f0f22e3bbee025129399458" category="list-text">添加要迁移到适用于VMware vSphere 10.3版的ONTAP工具的vCenter Server实例。有关详细信息、请参见 <block ref="946669e64e0e42585f18099dec81ec03" category="inline-link-macro-rx"></block> 。</block>
+  <block id="db9ce82f740ff3a9f2ad609cd7d296c9" category="list-text">通过 vCenter 服务器 API 在本地为 ONTAP 工具插件加入存储后端。</block>
+  <block id="c31397b4be5939d5bf72a8bb0faf9443" category="paragraph">您可以通过以下URL访问Swagger：`https://$FQDN_IP_PORT/,例如：<block ref="31b962e36589b3bd2081bfb7d028723f" category="inline-link-rx"></block>。</block>
+  <block id="6e086f74a5eaa2061811529e1d6a623e" category="paragraph">curl -X POST <block ref="c5820eec1fb061702ab2f34b24d1d295" category="inline-link-rx"></block> \ --header 'x-auth：&lt;auth_token&gt;' \ --header 'Content-Type：application/json' \ --data '{“otv_ip”：“xx.xx.xx.xx”，“vasa_provider_credentials”：{“用户名”：“xxxxx”，“密码”：“******”}，“database_password”：“******”}'</block>
+  <block id="684e740f5c7b2c5d6085a2342428c783" category="paragraph">{ “otv_ip”：“xx.xx.xx.xx”， “vasa_provider_credentials”：{ “用户名”：“xxxxx”， “密码”：“*******” } }</block>
+  <block id="fafb1a9cdf3a5eb6029da27aa9e99060" category="list-text">将适用于 VMware vSphere 存储提供程序的 ONTAP 工具添加到 vCenter Server 并<block ref="c283b8bc021fee7e6c856fce39783a46" category="inline-link-macro-rx"></block>使用适用于 VMware vSphere 的 ONTAP 工具。</block>
+  <block id="abb218554e93c229e9093816b59ec169" category="list-text">只有在触发数据存储库发现作业后、适用于VMware vSphere 9.xxx的ONTAP ONTAP工具中才会显示从适用于VMware vSphere的NFS和VMFS数据存储库、此作业可能需要长达30分钟才能完成。验证数据存储库是否在 VMware vSphere 插件用户界面页面的 ONTAP 工具概览页面上可见。</block>
+  <block id="3ce8158207209ed6b060c0d6db6b685d" category="section-title">更新存储复制适配器 (SRA) 的步骤</block>
+  <block id="507fcd9c144d0cee8403de3b0608fc58" category="paragraph">在恢复计划中，受保护站点是指虚拟机当前运行的位置，而恢复站点是指虚拟机将被恢复到的位置。SRM界面显示恢复计划的状态，其中包含有关受保护站点和恢复站点的详细信息。在恢复计划中，“清理”和“重新保护”按钮处于禁用状态，而“测试”和“运行”按钮保持启用状态。这表示该站点已准备好进行数据恢复。在迁移 SRA 之前，请验证一个站点处于受保护状态，另一个站点处于恢复状态。</block>
+  <block id="7c4cc8f57df0d72a910b2adf9c1dfc8a" category="list-text">转到VMware Live Site Recovery配置管理页面</block>
+  <block id="3f6debbe365887c1e9cead81caac7ed5" category="list-text">从省略号菜单中选择*重置配置*。</block>
+  <block id="d416ef8edb2844634dbe8cfff2e77f9a" category="sidebar">了解 igroup 和导出政策</block>
+  <block id="019227f341a3522deb6e80d962611b44" category="sidebar">将适用于VMware vSphere 9.xx的ONTAP工具迁移到10.3</block>
+  <block id="d619f73b597358ef5140938f37254d97" category="sidebar">迁移到适用于 VMware vSphere 的最新 ONTAP 工具</block>
 </blocks>
