@@ -128,7 +128,13 @@ NOTE: 支持从适用于VMware vSphere 10.1和10.2的ONTAP工具升级到10.3。
 
 .步骤
 . 将适用于VMware vSphere的ONTAP工具升级ISO上传到内容库。
-. 在主VM页面中，选择*Actions*>*Edit Settings*
+. 在主 VM 页面中，选择“操作”>“编辑设置”。要确定主虚拟机名称：
++
+.. 在任意节点上启用诊断 shell
+.. 运行以下命令：
+`grep sourceHost /opt/netapp/meta/ansible_vars.yaml`
+
+
 . 在编辑设置窗口的*CD/DVD驱动器*字段下选择内容库ISO文件。
 . 选择ISO文件并选择*OK*。选择*CD/DVD驱动器*字段中的已连接复选框。image:../media/primaryvm-edit-settings.png["编辑设置"]
 . 从vCenter Server中、打开一个ONTAP工具控制台。

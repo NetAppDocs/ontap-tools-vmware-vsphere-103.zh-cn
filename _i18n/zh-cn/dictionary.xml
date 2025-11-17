@@ -2026,7 +2026,6 @@
   <block id="cd457aeee08a9f6476660a1f15284160" category="paragraph">添加硬盘后、根据相应配置更新虚拟机资源、然后重新启动主虚拟机。</block>
   <block id="82c4bde04ac809c6d15f232949e072ce" category="paragraph">此时将创建一个新的HDD。动态存储配置程序使用此HDD来生成或复制卷。</block>
   <block id="b06f0e274f6c746f0d30521b5c7f392e" category="list-text">将适用于VMware vSphere的ONTAP工具升级ISO上传到内容库。</block>
-  <block id="dd5382558ec4a47dfbc203fb25698772" category="list-text">在主VM页面中，选择*Actions*&gt;*Edit Settings*</block>
   <block id="ef9e53e40d78d57abe78283a3603eb4e" category="list-text">在编辑设置窗口的*CD/DVD驱动器*字段下选择内容库ISO文件。</block>
   <block id="54a029420d74c0dff69239155cf510b5" category="inline-image-macro">编辑设置</block>
   <block id="2c2d3019834934bb25449edddc396321" category="list-text">选择ISO文件并选择*OK*。选择*CD/DVD驱动器*字段中的已连接复选框。<block ref="af57a506b85774ef3a9f849e2b26e258" category="inline-image-macro-rx" type="image"></block></block>
@@ -2268,4 +2267,7 @@
   <block id="d416ef8edb2844634dbe8cfff2e77f9a" category="sidebar">了解 igroup 和导出政策</block>
   <block id="019227f341a3522deb6e80d962611b44" category="sidebar">将适用于VMware vSphere 9.xx的ONTAP工具迁移到10.3</block>
   <block id="d619f73b597358ef5140938f37254d97" category="sidebar">迁移到适用于 VMware vSphere 的最新 ONTAP 工具</block>
+  <block id="a928a1b805644ea87a643f7f8d60a477" category="list-text">在主 VM 页面中，选择“操作”&gt;“编辑设置”。要确定主虚拟机名称：</block>
+  <block id="75a86edd37c9b2122be450b28fa09149" category="list-text">在任意节点上启用诊断 shell</block>
+  <block id="e016d50ae26af4214e6a864c1c2c8db5" category="list-text">运行以下命令：<block ref="1ebe86b64a17c55ae52f4488cffae75f" prefix=" " category="inline-code"></block></block>
 </blocks>
