@@ -17,7 +17,7 @@ summary: 下一节介绍了本文档中使用的重要概念和术语。
 
 === ASA r2系统
 
-新的NetApp ASA R2系统提供了一个统一的硬件和软件解决方案、可根据仅SAN客户的需求提供简化的体验。 https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html["了解ASA R2存储系统"](英文)。
+新的 NetApp ASA r2 系统提供统一的硬件和软件解决方案，可为仅限 SAN 的客户提供特定的简化体验 https://docs.netapp.com/us-en/asa-r2/get-started/learn-about.html["了解ASA R2存储系统"^]。
 
 
 
@@ -29,7 +29,7 @@ CA是颁发安全套接字层(SSL)证书的受信任实体。
 
 === 一致性组
 
-一致性组是指作为一个单元进行管理的一组卷。在ONTAP中、一致性组可为跨多个卷的应用程序工作负载提供轻松的管理和保护保证。详细了解 https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["一致性组"]。
+一致性组是作为一个单位管理的卷的集合。在 ONTAP 中，一致性组为跨多个卷的应用程序工作负载提供轻松管理和保护保证。详细了解 https://docs.netapp.com/us-en/ontap/consistency-groups/index.html["一致性组"^]。
 
 
 
@@ -77,7 +77,7 @@ RPO用于衡量备份或复制数据的频率。它表示中断后必须恢复�
 
 === SnapMirror主动同步(SMAS)
 
-通过SnapMirror主动同步、即使在整个站点发生故障时、业务服务也可以继续运行、从而支持应用程序使用二级副本透明地进行故障转移。使用SnapMirror活动同步触发故障转移需要手动干预或自定义脚本。Lear了解更多信息 https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["SnapMirror活动同步"]。
+SnapMirror 主动同步使业务服务即使在整个站点发生故障时也能继续运行，支持应用程序使用辅助副本透明地进行故障切换。使用 SnapMirror 主动同步触发故障切换无需手动干预或自定义脚本。详细了解 https://docs.netapp.com/us-en/ontap/snapmirror-active-sync/index.html["SnapMirror活动同步"^]。
 
 
 
@@ -149,7 +149,7 @@ VAAI是一组API、可用于在VMware vSphere ESXi主机和存储设备之间进
 
 === vSphere Metro Storage Cluster
 
-vSphere Metro Storage Cluster (VMSC)是一项技术、可在延伸型集群部署中支持和支持vSphere。NetApp MetroCluster和SnapMirror active sync (以前称为SMBC)均支持VMSC解决方案。这些解决方案可在域发生故障时增强业务连续性。故障恢复能力模型取决于您的特定配置选择。详细了解 https://core.vmware.com/resource/vmware-vsphere-metro-storage-cluster-vmsc["VMware vSphere Metro Storage Cluster"]。
+vSphere Metro Storage Cluster (vMSC) 是一种支持 vSphere 扩展群集部署的技术。vMSC 解决方案支持 NetApp MetroCluster 和 SnapMirror 主动同步（以前称为 SMBC）。这些解决方案可在域出现故障时提供增强的业务连续性。弹性模型基于您的特定配置选择。详细了解 https://core.vmware.com/resource/vmware-vsphere-metro-storage-cluster-vmsc["VMware vSphere Metro Storage Cluster"^]。
 
 
 

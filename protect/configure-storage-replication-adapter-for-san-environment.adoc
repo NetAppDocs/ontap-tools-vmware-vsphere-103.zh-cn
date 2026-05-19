@@ -25,7 +25,7 @@ summary: '在运行Storage Replication Adapter \(SRA\) for VMware Live Site Reco
 VMware站点上提供了有关安装VMware Live Site Recovery的文档。
 
 +
-https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/about-vmware-live-site-recovery-installation-and-configuration.html["关于VMware Live Site Recovery"]
+https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/about-vmware-live-site-recovery-installation-and-configuration.html["关于VMware Live Site Recovery"^]
 
 * SRA
 +
@@ -54,7 +54,7 @@ https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/
 有关安装VMware Live Site Recovery的文档可在VMware站点上找到。
 
 +
-https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/about-vmware-live-site-recovery-installation-and-configuration.html["关于VMware Live Site Recovery"]
+https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/about-vmware-live-site-recovery-installation-and-configuration.html["关于VMware Live Site Recovery"^]
 
 * SRA
 +

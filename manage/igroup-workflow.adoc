@@ -220,7 +220,7 @@ ONTAP 工具 9.x 逻辑允许每个 igroup 有多个启动器，而无需强制�
 这确保符合分层模型。
 
 .相关主题
-https://docs.netapp.com/us-en/ontap/san-admin/igroups-concept.html["关于 igroup"]
+https://docs.netapp.com/us-en/ontap/san-admin/igroups-concept.html["关于 igroup"^]
 
 
 
@@ -237,4 +237,4 @@ https://docs.netapp.com/us-en/ontap/san-admin/igroups-concept.html["关于 igrou
 在不同数据存储之间重复使用导出策略时，分配导出策略的方式会有所不同。重复使用导出策略时，您可以将新的主机 IP 地址附加到策略中。删除或卸载使用共享导出策略的数据存储时，该策略不会被删除。它会保持不变，并且主机 IP 地址不会被移除，因为它与其他数据存储共享。不建议重复使用导出策略，因为这可能会导致访问和延迟问题。
 
 .相关主题
-https://docs.netapp.com/us-en/ontap/nfs-config/create-export-policy-task.html["创建导出策略"]
+https://docs.netapp.com/us-en/ontap/nfs-config/create-export-policy-task.html["创建导出策略"^]

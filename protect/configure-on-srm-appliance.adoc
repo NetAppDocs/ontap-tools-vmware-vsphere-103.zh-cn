@@ -14,7 +14,7 @@ summary: '部署VMware Live Site Recovery设备后、您应在VMware Live Site R
 部署VMware Live Site Recovery设备后、您应在VMware Live Site Recovery设备上配置SRA。成功配置SRA后、VMware Live Site Recovery设备便可与SRA进行通信以进行灾难恢复管理。您应将适用于VMware vSphere凭据(IP地址)的ONTAP工具存储在VMware Live Site Recovery设备中、以实现VMware Live Site Recovery设备与SRA之间的通信。
 
 .开始之前
-您应已从下载_tar.gz_文件 https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支持站点"]。
+您应该从  https://mysupport.netapp.com/site/products/all/details/otv10/downloads-tab["NetApp 支持站点"^] 下载 _tar.gz_ 文件。
 
 * 关于此任务 *
 

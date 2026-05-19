@@ -54,7 +54,7 @@ summary: '您应按照建议的设置配置存储超时时间间隔、以使Stor
 |===
 您还应启用 `StorageProvider.autoResignatureMode`选项。
 
-有关修改存储提供程序设置的详细信息、请参见 https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-provider-settings.html["更改存储提供程序设置"]。
+有关修改 Storage Provider 设置的详细信息，请参见 https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-provider-settings.html["更改存储提供程序设置"^]。
 
 
 
@@ -65,4 +65,4 @@ summary: '您应按照建议的设置配置存储超时时间间隔、以使Stor
 
 NOTE: 指定的超时间隔为最大值。您无需等待达到最大超时值。大多数命令都会在设置的最大超时间隔内完成。
 
-有关修改SAN Provider设置的信息、请参见 https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-settings.html["更改存储设置"]。
+有关修改 SAN Provider 设置的信息，请参见 https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/9-0/how-do-i-protect-my-environment/advanced-srm-configuration/reconfigure-srm-settings/change-storage-settings.html["更改存储设置"^]。

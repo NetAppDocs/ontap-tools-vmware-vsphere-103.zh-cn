@@ -23,7 +23,7 @@ summary: 迁移存储数据时、系统会使用REST API手动启用存储后端
 | *如果设置有 vVols 数据存储* | *如果设置仅包含 NFS 和 VMFS 数据存储* 
 
 
-| 步骤：1.link:../migrate/sra-vasa-migration.html["迁移 VASA 提供程序"] 2.  https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/storage-policy-based-management-in-vsphere/creating-and-managing-vsphere-storage-policies.html["创建虚拟机存储策略"] | 步骤：1.从您的环境中删除 ONTAP 工具 9.xx。请参阅 https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/OTV_How_to_remove_OTV_9_12_from_your_environment["如何从您的环境中删除 OTV 9.xx"] NetApp 知识库文章。2.link:../deploy/quick-start.html["为 VMware vSphere 10.3 部署和配置 ONTAP 工具"] 3.link:../migrate/sra-vasa-migration.html["更新 SRA"] 4.  https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/storage-policy-based-management-in-vsphere/creating-and-managing-vsphere-storage-policies.html["创建虚拟机存储策略"] 
+| 步骤：1.link:../migrate/sra-vasa-migration.html["迁移 VASA 提供程序"] 2. https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/storage-policy-based-management-in-vsphere/creating-and-managing-vsphere-storage-policies.html["创建虚拟机存储策略"^] | 步骤：1.从环境中删除 ONTAP tools 9.xx。请参阅 https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/OTV_How_to_remove_OTV_9_12_from_your_environment["如何从您的环境中删除 OTV 9.xx"^] NetApp 知识库文章。2.link:../deploy/quick-start.html["为 VMware vSphere 10.3 部署和配置 ONTAP 工具"] 3.link:../migrate/sra-vasa-migration.html["更新 SRA"] 4. https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/storage-policy-based-management-in-vsphere/creating-and-managing-vsphere-storage-policies.html["创建虚拟机存储策略"^] 
 |===
 
 NOTE: 从适用于VMware vSphere的ONTAP工具9.xx迁移到10.3后、使用NVMe/FC协议的vvol数据存储库将无法运行、因为ONTAP工具10.3仅对VMFS数据存储库支持NVMe-oF协议。

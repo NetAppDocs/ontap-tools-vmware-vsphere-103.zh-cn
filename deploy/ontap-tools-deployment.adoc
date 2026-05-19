@@ -37,7 +37,7 @@ NOTE: 要稍后启用HA部署、请勿将托管ONTAP工具的虚拟机直接部�
 
 
 
-NOTE: 有关详细信息、请参见 https://blogs.vmware.com/vsphere/2020/01/creating-and-using-content-library.html["创建和使用内容库"]博客。
+NOTE: 有关详细信息，请参见  https://blogs.vmware.com/vsphere/2020/01/creating-and-using-content-library.html["创建和使用内容库"^] 博客。
 
 
 NOTE: 在继续部署之前、请将清单上集群的Distributed Resource Scheduler (DRS)设置为"保守"。这样可确保在安装期间不会迁移VM。

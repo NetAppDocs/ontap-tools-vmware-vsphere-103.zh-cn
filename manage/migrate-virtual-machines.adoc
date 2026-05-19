@@ -50,7 +50,7 @@ VMware目前不支持克隆到VM模板的虚拟机。
 
 支持受保护虚拟机的克隆。
 
-有关详细信息、请参见 https://docs.vmware.com/en/VMware-Horizon/2103/virtual-desktops/GUID-B5020738-8649-4308-A8B0-70AF80527DF6.html["创建虚拟机以进行克隆"]。
+有关更多详细信息，请参见 https://docs.vmware.com/en/VMware-Horizon/2103/virtual-desktops/GUID-B5020738-8649-4308-A8B0-70AF80527DF6.html["创建虚拟机以进行克隆"^]。
 
 
 

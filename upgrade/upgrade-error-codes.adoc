@@ -158,4 +158,4 @@ NOTE: 此页面上提供的错误代码仅供参考。如果错误仍然存在�
 
 NOTE: 适用于VMware vSphere 10.3的ONTAP工具支持零RPO。
 
-详细了解 https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/How_to_restore_ONTAP_tools_for_VMware_vSphere_if_upgrade_fails_from_version_10.0_to_10.1["从10.0升级到10.1失败时如何还原适用于VMware vSphere的ONTAP工具"]
+详细了解 https://kb.netapp.com/data-mgmt/OTV/VSC_Kbs/How_to_restore_ONTAP_tools_for_VMware_vSphere_if_upgrade_fails_from_version_10.0_to_10.1["从10.0升级到10.1失败时如何还原适用于VMware vSphere的ONTAP工具"^]

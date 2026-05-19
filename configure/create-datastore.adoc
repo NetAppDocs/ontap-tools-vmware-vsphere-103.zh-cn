@@ -96,16 +96,16 @@ NOTE: 您不能使用SVM的默认/根卷策略创建NFS数据存储库。
 * 为ASA R2存储系统中的SVM用户将SVM映射到聚合。
 * 如果您使用的是NVMe/TCP协议、请配置ESXi主机：
 +
-.. 查看 https://www.vmware.com/resources/compatibility/detail.php?deviceCategory=san&productid=49677&releases_filter=589,578,518,508,448&deviceCategory=san&details=1&partner=399&Protocols=1&transportTypes=3&isSVA=0&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc["VMware 兼容性指南"]
+.. 查看 https://www.vmware.com/resources/compatibility/detail.php?deviceCategory=san&productid=49677&releases_filter=589,578,518,508,448&deviceCategory=san&details=1&partner=399&Protocols=1&transportTypes=3&isSVA=0&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc["VMware 兼容性指南"^]
 +
 
 NOTE: VMware vSphere 7.0 U3及更高版本支持NVMe/TCP协议。但是、建议使用VMware vSphere 8.0及更高版本。
 
 .. 验证网络接口卡(NIC)供应商是否支持采用NVMe/TCP协议的ESXi NIC。
 .. 根据NIC供应商规格为NVMe/TCP配置ESXi NIC。
-.. 使用VMware vSphere 7版本时、请按照VMware站点上的说明 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/configure-adapters-for-nvme-over-tcp-storage/configure-vmkernel-binding-for-the-tcp-adapter.html["为基于TCP适配器的NVMe配置VMkernel绑定"]配置NVMe/TCP端口绑定。使用VMware vSphere 8版本时，请按照 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-tcp-on-esxi.html["在ESXi上配置基于TCP的NVMe"]配置NVMe/TCP端口绑定。
-.. 对于VMware vSphere 7版本、请按照第页上的说明 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["启用基于RDMA的NVMe或基于TCP的NVMe软件适配器"]配置NVMe/TCP软件适配器。对于VMware vSphere 8版本、请按照 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-rdma-roce-v2-on-esxi/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["添加基于RDMA的软件NVMe或基于TCP适配器的NVMe"]配置NVMe/TCP软件适配器。
-.. link:../configure/discover-storage-systems-and-hosts.html["发现存储系统和主机"]在ESXi主机上运行操作。有关详细信息，请参阅 https://community.netapp.com/t5/Tech-ONTAP-Blogs/How-to-Configure-NVMe-TCP-with-vSphere-8-0-Update-1-and-ONTAP-9-13-1-for-VMFS/ba-p/445429["如何使用vSphere 8.0 Update 1和VMfs.13.1为ONTAP 9数据存储库配置NVMe/TCP"]。
+.. 使用 VMware vSphere 7 版本时，请按照 VMware 站点上的说明 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/configure-adapters-for-nvme-over-tcp-storage/configure-vmkernel-binding-for-the-tcp-adapter.html["为基于TCP适配器的NVMe配置VMkernel绑定"^]配置 NVMe/TCP 端口绑定。使用 VMware vSphere 8 版本时，请按照 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-tcp-on-esxi.html["在ESXi上配置基于TCP的NVMe"^]配置 NVMe/TCP 端口绑定。
+.. 对于 VMware vSphere 7 版本，请按照页面 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-storage-7-0/about-vmware-nvme-storage/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["启用基于RDMA的NVMe或基于TCP的NVMe软件适配器"^]上的说明配置 NVMe/TCP 软件适配器。对于 VMware vSphere 8 版本，请按照 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-storage-8-0/about-vmware-nvme-storage/configuring-nvme-over-rdma-roce-v2-on-esxi/add-software-nvme-over-rdma-or-nvme-over-tcp-adapters.html["添加基于RDMA的软件NVMe或基于TCP适配器的NVMe"^]配置 NVMe/TCP 软件适配器。
+.. 在 ESXi 主机上运行 link:../configure/discover-storage-systems-and-hosts.html["发现存储系统和主机"] 操作。有关详细信息，请参阅 https://community.netapp.com/t5/Tech-ONTAP-Blogs/How-to-Configure-NVMe-TCP-with-vSphere-8-0-Update-1-and-ONTAP-9-13-1-for-VMFS/ba-p/445429["如何使用vSphere 8.0 Update 1和VMfs.13.1为ONTAP 9数据存储库配置NVMe/TCP"^]。
 
 
 * 如果您使用的是NVMe/FC协议、请执行以下步骤来配置ESXi主机：
@@ -117,11 +117,11 @@ NOTE: VMware vSphere 7.0 U3及更高版本支持NVMe/TCP协议。但是、建议
 
 
 
-要为ONTAP SVM配置FC协议，请参见 https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-fc-task.html["为 FC 配置 SVM"]。
+要为 FC 协议配置 ONTAP SVM，请参阅 https://docs.netapp.com/us-en/ontap/san-admin/configure-svm-fc-task.html["为 FC 配置 SVM"^]。
 
-有关在VMware vSphere 8.0中使用NVMe/FC协议的详细信息，请参阅 https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["适用于采用ONTAP 的ESXi 8.x的NVMe-oF主机配置"]。
+有关在 VMware vSphere 8.0 中使用 NVMe/FC 协议的更多信息，请参阅 https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["适用于采用ONTAP 的ESXi 8.x的NVMe-oF主机配置"^]。
 
-有关在VMware vSphere 7.0中使用NVMe/FC的详细信息，请参阅 https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["《 ONTAP NVMe/FC 主机配置指南》"]和 http://www.netapp.com/us/media/tr-4684.pdf["TR-4684"]。
+有关在 VMware vSphere 7.0 中使用 NVMe/FC 的更多信息，请参阅 https://docs.netapp.com/us-en/ontap-sanhost/nvme_esxi_8.html["《 ONTAP NVMe/FC 主机配置指南》"^]和 http://www.netapp.com/us/media/tr-4684.pdf["TR-4684"^]。
 
 .步骤
 . 登录到vSphere Client。
