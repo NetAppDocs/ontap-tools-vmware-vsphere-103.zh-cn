@@ -48,10 +48,12 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 |===
 
 
+[[deployment-worksheet]]
 == 部署工作表
 
 
 
+[[for-single-node-deployment]]
 === 适用于单节点部署
 
 使用以下工作表收集适用于VMware vSphere的ONTAP工具初始部署所需的信息：适用于适用于VMware vSphere的ONTAP工具初始部署：
@@ -99,6 +101,7 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 
 
 
+[[for-high-availability-ha-deployment]]
 === 适用于高可用性(HA)部署
 
 除了单节点部署要求之外、您还需要HA部署的以下信息：
@@ -131,6 +134,7 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 |===
 
 
+[[network-firewall-configuration]]
 == 网络防火墙配置
 
 在网络防火墙中打开IP地址所需的端口。ONTAP工具必须能够通过端口443访问此LIF。有关最新更新、请参见link:../deploy/prerequisites.html["端口要求"]。

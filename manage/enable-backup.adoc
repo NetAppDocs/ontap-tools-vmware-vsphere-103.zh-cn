@@ -15,6 +15,7 @@ summary: 由于适用于VMware vSphere 10.3的ONTAP工具使用动态存储配�
 
 
 
+[[create-backup-and-download-the-backup-file]]
 == 创建备份并下载备份文件
 
 .步骤
@@ -38,6 +39,7 @@ summary: 由于适用于VMware vSphere 10.3的ONTAP工具使用动态存储配�
 
 
 
+[[recover]]
 == 恢复
 
 要恢复设置、请关闭现有虚拟机、然后使用初始部署中使用的OVA部署新虚拟机。

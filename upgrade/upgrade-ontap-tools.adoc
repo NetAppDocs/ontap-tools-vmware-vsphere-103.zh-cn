@@ -109,7 +109,7 @@ NOTE: 支持从适用于VMware vSphere 10.1和10.2的ONTAP工具升级到10.3。
 *为vCenter中的VMware vSphere VM创建ONTAP工具的快照(对于HA部署、为3个VM；对于非HA部署、为1个VM)*
 
 * 在vSphere客户端用户界面中、选择虚拟机。
-* 进入快照选项卡并选择*拍摄快照*按钮。为虚拟机创建一个已静用快照。有关详细信息、请参见 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/take-snapshots-of-a-virtual-machine.html["为虚拟机创建快照"^]。
+* 转到快照选项卡，然后选择*拍摄快照*按钮。拍摄 VM 的静止快照。有关详细信息，请参阅 https://techdocs.broadcom.com/["Broadcom 技术文档"^]。
 
 
 在执行升级之前、请从日志包中删除前缀为"generate—support-Bundle—job"的已完成Pod。如果正在生成支持包、请等待生成完成、然后删除此Pod。

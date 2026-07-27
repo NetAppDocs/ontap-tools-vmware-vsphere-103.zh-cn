@@ -15,6 +15,7 @@ summary: '在运行Storage Replication Adapter \(SRA\) for VMware Live Site Reco
 
 
 
+[[configure-sra-for-san-environments]]
 == 为SAN环境配置SRA
 
 .开始之前
@@ -44,6 +45,7 @@ https://techdocs.broadcom.com/us/en/vmware-cis/live-recovery/live-site-recovery/
 
 
 
+[[configure-sra-for-nas-environments]]
 == 为NAS环境配置SRA
 
 .开始之前

@@ -18,6 +18,7 @@ VMware vCenter Server提供了RBAC功能、可用于控制对vSphere对象的访
 
 
 
+[[illustration-of-a-vcenter-server-permission]]
 == vCenter Server权限图示
 
 权限是在vCenter Server环境中强制实施访问控制的基础。它将应用于权限定义中包含用户或组的vSphere对象。下图简要展示了vCenter权限。
@@ -26,18 +27,21 @@ image:vc-permission.png["vCenter权限"]
 
 
 
+[[components-of-a-vcenter-server-permission]]
 == vCenter Server权限的组成部分
 
 vCenter Server权限是指在创建权限时绑定在一起的多个组件的软件包。
 
 
 
+[[vsphere-objects]]
 === vSphere 对象
 
 权限与vSphere对象关联、例如vCenter Server、ESXi主机、虚拟机、数据存储库、数据中心和文件夹。根据为对象分配的权限、vCenter Server可确定每个用户或组可对对象执行的操作或任务。对于适用于VMware vSphere的ONTAP工具专用的任务、所有权限都将在vCenter Server的根或根文件夹级别进行分配和验证。有关详细信息、请参见 link:../concepts/rbac-vcenter-use.html["对vCenter Server使用RBAC"] 。
 
 
 
+[[privileges-and-roles]]
 === Privileges和角色
 
 适用于VMware vSphere 10的ONTAP工具可使用两种类型的vSphere Privileges。为了简化在此环境中使用RBAC的过程、ONTAP工具提供了包含所需本机和自定义Privileges的角色。Privileges包括：
@@ -54,6 +58,7 @@ vCenter Server权限是指在创建权限时绑定在一起的多个组件的软
 
 
 
+[[users-and-groups]]
 === 用户和组
 
 您可以使用Active Directory或本地vCenter Server实例定义用户和组。通过与角色结合使用、您可以在vSphere对象层次结构中的对象上创建权限。此权限会根据关联角色中的Privileges授予访问权限。请注意、角色不会单独直接分配给用户。而是通过更大的vCenter Server权限中的角色Privileges、用户和组可以访问某个对象。

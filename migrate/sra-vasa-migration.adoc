@@ -12,6 +12,7 @@ summary: 迁移存储数据时、系统会使用REST API手动启用存储后端
 
 
 
+[[steps-to-migrate-the-vasa-provider]]
 == 迁移 VASA 提供程序的步骤
 
 . 要在适用于VMware vSphere的现有ONTAP工具上启用Derby端口1527、请启用root用户并通过SSH登录到命令行界面。然后、运行以下命令：
@@ -150,6 +151,7 @@ VM存储策略兼容性*下的兼容性状态显示为*过时*。
 
 
 
+[[steps-to-update-the-storage-replication-adaptorsra]]
 == 更新存储复制适配器 (SRA) 的步骤
 
 .开始之前

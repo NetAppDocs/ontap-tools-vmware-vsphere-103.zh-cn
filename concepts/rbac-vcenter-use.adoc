@@ -18,12 +18,14 @@ summary: 在生产环境中使用适用于VMware vSphere 10的ONTAP工具之前�
 
 
 
+[[vcenter-roles-and-the-administrator-account]]
 == vCenter角色和管理员帐户
 
 只有在要限制对vSphere对象和关联管理任务的访问时、才需要定义和使用自定义vCenter Server角色。如果不需要限制访问、则可以改用管理员帐户。每个管理员帐户都在对象层次结构的顶层使用管理员角色进行定义。这样、您就可以完全访问vSphere对象、包括适用于VMware vSphere 10的ONTAP工具添加的对象。
 
 
 
+[[vsphere-object-hierarchy]]
 == vSphere对象层次结构
 
 vSphere对象清单按层次结构进行组织。例如、您可以按如下所示向下移动层次结构：
@@ -34,6 +36,7 @@ vSphere对象清单按层次结构进行组织。例如、您可以按如下所�
 
 
 
+[[roles-included-with-ontap-tools-for-vmware-vsphere-10]]
 == 适用于VMware vSphere 10的ONTAP工具附带的角色
 
 为了简化vCenter Server RBAC的使用、适用于VMware vSphere的ONTAP工具提供了针对各种管理任务量身定制的预定义角色。
@@ -58,18 +61,21 @@ NOTE: 您可以根据需要创建新的自定义角色。在这种情况下、�
 
 
 
+[[vsphere-objects-and-ontap-storage-backends]]
 == vSphere对象和ONTAP存储后端
 
 这两个RBAC环境协同工作。在vSphere客户端界面中执行任务时、系统会首先检查为vCenter Server定义的ONTAP工具角色。如果vSphere允许执行此操作、则会检查ONTAP Role Privileges。第二步是根据创建和配置存储后端时分配给用户的ONTAP角色执行的。
 
 
 
+[[working-with-vcenter-server-rbac]]
 == 使用vCenter Server RBAC
 
 使用vCenter Server Privileges和权限时、需要考虑几个事项。
 
 
 
+[[required-privileges]]
 === 所需权限
 
 要访问适用于VMware vSphere 10的ONTAP工具用户界面、您需要具有ONTAP tools-Specific _view_权限。如果您在没有此特权的情况下登录到vSphere并单击NetApp图标、则适用于VMware vSphere的ONTAP工具将显示一条错误消息、并阻止您访问用户界面。
@@ -80,6 +86,7 @@ vSphere对象层次结构中的分配级别决定了您可以访问用户界面�
 
 
 
+[[assigning-permissions]]
 === 分配权限
 
 如果要限制对vSphere对象和任务的访问、您需要使用vCenter Server权限。在vSphere对象层次结构中分配权限的位置决定了适用于VMware vSphere 10的ONTAP工具用户可以执行的任务。

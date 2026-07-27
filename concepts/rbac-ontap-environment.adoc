@@ -18,6 +18,7 @@ ONTAP提供了一个强大且可扩展的RBAC环境。您可以使用RBAC功能�
 
 
 
+[[overview-of-the-administrative-options]]
 == 管理选项概述
 
 根据您的环境和目标、使用ONTAP RBAC时有多种选项可供选择。主要行政决定概述如下。有关详细信息、另请参见 https://docs.netapp.com/us-en/ontap-automation/rest/rbac_overview.html["ONTAP自动化：RBAC安全性概述"^]。
@@ -48,6 +49,7 @@ ONTAP在集群和SVM级别提供了一组预定义角色。您还可以定义自
 
 
 
+[[working-with-ontap-rest-roles]]
 == 使用ONTAP REST角色
 
 在使用适用于VMware vSphere 10的ONTAP工具附带的ONTAP REST角色时、需要注意几个事项。

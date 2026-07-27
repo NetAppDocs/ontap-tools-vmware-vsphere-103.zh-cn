@@ -18,6 +18,7 @@ summary: 适用于VMware vSphere 10的ONTAP工具是一组用于虚拟机生命�
 
 
 
+[[rest-web-services-foundation]]
 == REST Web 服务基础
 
 表述性状态转移(Representational State Transfer、REST)是一种用于创建分布式Web应用程序(包括Web服务API的设计)的模式。它建立了一组公开基于服务器的资源并管理其状态的技术。
@@ -45,6 +46,7 @@ summary: 适用于VMware vSphere 10的ONTAP工具是一组用于虚拟机生命�
 
 
 
+[[ontap-tools-manager-environment]]
 == ONTAP工具管理器环境
 
 您应考虑ONTAP Tools Manager环境的几个方面。

@@ -1552,7 +1552,6 @@
   <block id="23829b8d6575f7cd3e20a5e92b475a9e" category="doc">卸载适用于VMware vSphere的ONTAP工具</block>
   <block id="f54e212052df635bcc70d25302fd583e" category="paragraph">卸载适用于VMware vSphere的ONTAP工具将删除这些工具中的所有数据。</block>
   <block id="82a00fc1c0ae6d437f6d942c64bee898" category="list-text">从适用于VMware vSphere托管的数据存储库的ONTAP工具中删除或移动所有虚拟机。</block>
-  <block id="41e0fa10828ee2d85cfd4c0ff833ac64" category="inline-link">Storage vMotion</block>
   <block id="f0833ce92c23eb056dde238669740988" category="list-text"><block ref="523efdef8100699453c6b07ce8f4921c" category="inline-link-macro-rx"></block>在适用于VMware vSphere的ONTAP工具上创建。</block>
   <block id="1d920979688b28c7b10ef84d14436f95" category="list-text">如果已启用VASA Provider、请在ONTAP工具中选择*设置*&gt;* VASA Provider设置*&gt;*注销*、以便从所有vCenter Server中取消注册VASA Provider。</block>
   <block id="02a713a12e2b216b65a52896d0728a0a" category="list-text">解除所有存储后端与vCenter Server实例的关联。请参阅 <block ref="8f766e539ddb39a7c07c0c84dded1670" category="inline-link-macro-rx"></block>。</block>
@@ -1987,8 +1986,6 @@
   <block id="399a5cfe88876e091f96014da7798994" category="list-text">从ONTAP系统管理器用户界面中、在搜索栏中按卷名称搜索卷、然后通过选择名称打开该卷。转至快照并添加该卷的快照。</block>
   <block id="a780a238f22a802c24a2182aea27323f" category="paragraph">*为vCenter中的VMware vSphere VM创建ONTAP工具的快照(对于HA部署、为3个VM；对于非HA部署、为1个VM)*</block>
   <block id="c3710cf1c44da535612cf08236cee98f" category="list-text">在vSphere客户端用户界面中、选择虚拟机。</block>
-  <block id="a6d135b70268e6dae6e2414dc9c7e465" category="inline-link">为虚拟机创建快照</block>
-  <block id="ed05024ef185f71f630610fa2998b97c" category="list-text">进入快照选项卡并选择*拍摄快照*按钮。为虚拟机创建一个已静用快照。有关详细信息、请参见<block ref="cfbcb02d8f4029fded9e80960c9fdffc" category="inline-link-rx"></block>。</block>
   <block id="07cf559ee7bbc8841180f1dd59c2917f" category="paragraph">在执行升级之前、请从日志包中删除前缀为"generate—support-Bundle—job"的已完成Pod。如果正在生成支持包、请等待生成完成、然后删除此Pod。</block>
   <block id="7817c7412ad536f5c02bd959934f66d5" category="paragraph">对于任何类型的升级、您都需要额外添加一个100 GB硬盘驱动器(HDD)。要添加HDD、请执行以下任务。</block>
   <block id="11873b433682caa870371cc1631ef90f" category="list-text">选择单节点配置中的VM或HA配置中的所有三个VM。</block>
@@ -2247,7 +2244,6 @@
   <block id="666dbb89f7307770629c19db67953504" category="list-text">在 ESXi 主机上运行 <block ref="c076a6b54534640d64418e3f25ccabbb" category="inline-link-macro-rx"></block> 操作。有关详细信息，请参阅<block ref="7d8be8ab6f925d44e6096143b50930eb" category="inline-link-rx"></block>。</block>
   <block id="1250632adcebb5fdde746f68f5f5d1ab" category="paragraph">要为 FC 协议配置 ONTAP SVM，请参阅<block ref="9a85cf35d1c576c50eca5d001fed7770" category="inline-link-rx"></block>。</block>
   <block id="9a2c5be73de128ee1c042576f0081228" category="paragraph">有关在 VMware vSphere 8.0 中使用 NVMe/FC 协议的更多信息，请参阅<block ref="5db8b1ba8249e6aa04254bfda3e03cad" category="inline-link-rx"></block>。</block>
-  <block id="dd7acf96403efe96c19052c3b7b43696" category="paragraph">有关在 VMware vSphere 7.0 中使用 NVMe/FC 的更多信息，请参阅<block ref="5b342c912562dcb58ee3f3648204c817" category="inline-link-rx"></block>和<block ref="7a29b2f31035a451d5b068728d2b79a7" category="inline-link-rx"></block>。</block>
   <block id="dea9ea86828f4eeb20d1d426a67fb54e" category="list-text">下载 <block ref="eb8871d084e5444d76435f2f53088444" category="inline-link-rx"></block> 安装包。</block>
   <block id="cef9325a79cb8ba5e8e01d588772d728" category="paragraph">有关流程的更多信息，请参阅 <block ref="0979244af97101600923fad626326667" category="inline-link-rx"></block> KB 文章。</block>
   <block id="3155093ff66d6bd7b727ca8a29f56ab8" category="paragraph"><block ref="3155093ff66d6bd7b727ca8a29f56ab8" category="inline-link-rx"></block></block>
@@ -2262,7 +2258,6 @@
   <block id="2065c7b470f4d228b592158785fc8c0b" category="paragraph"><block ref="2065c7b470f4d228b592158785fc8c0b" category="inline-link-rx"></block></block>
   <block id="da0317a707b799e20d52a9ed48600a5d" category="paragraph">有关更多详细信息，请参见<block ref="d715c2f17cf44a9fe16a53988f715a0c" category="inline-link-rx"></block>。</block>
   <block id="99ff68e0a5e3eff8350235e4aa349b33" category="list-text">要删除虚拟机，请参见<block ref="730771976bf8809d0e1b18b2b9db8122" category="inline-link-rx"></block></block>
-  <block id="2cc4cd106b8b28a2a7a4dc41aab2ccb2" category="list-text">要将它们移动到非托管数据存储区，请参见<block ref="c6d1808825e9c8d51ec3ee5f99c953bd" category="inline-link-rx"></block></block>
   <block id="dea491514edb56a330b46ce4403a9ff0" category="cell">步骤：1.<block ref="393201960d4eefccacb06cc7ccdc8cfc" category="inline-link-macro-rx"></block> 2.<block ref="df8c7098182657a68e9193cd3f4cbf10" category="inline-link-rx"></block></block>
   <block id="f00c083ca28330574bbee60ec74a082c" category="cell">步骤：1.从环境中删除 ONTAP tools 9.xx。请参阅<block ref="79b3439203bbb78183de845f86175d16" category="inline-link-rx"></block> NetApp 知识库文章。2.<block ref="ed7f206c59f60e7024e5e58e1da041e1" category="inline-link-macro-rx"></block> 3.<block ref="a29d94f131e388c7ee7c4a56d062be87" category="inline-link-macro-rx"></block> 4.<block ref="df8c7098182657a68e9193cd3f4cbf10" category="inline-link-rx"></block></block>
   <block id="ef16d9c852f6889c906737f47c81fe38" category="paragraph">您应该从 <block ref="db8756d7f65d6a8e593e69ba45adbb2e" category="inline-link-rx"></block> 下载 _tar.gz_ 文件。</block>
@@ -2270,4 +2265,8 @@
   <block id="cc9798c15a976cd5b7bdcf483174a390" category="paragraph">有关修改 SAN Provider 设置的信息，请参见<block ref="44bb7c66e0bef8f100bbfa7ad4ff5c75" category="inline-link-rx"></block>。</block>
   <block id="3daf74ebef2f034c4ab4baf59f15dc51" category="paragraph"><block ref="3daf74ebef2f034c4ab4baf59f15dc51" category="inline-link-rx"></block></block>
   <block id="643c0215c2c7179633d4deb5f3a78c6b" category="paragraph">详细了解<block ref="d45262f681072e6d1fc0e869b99c2a10" category="inline-link-rx"></block></block>
+  <block id="57804fdd8ba31e5051758224c22549a1" category="paragraph">有关在 VMware vSphere 7.0 中使用 NVMe/FC 的更多信息，请参阅<block ref="5b342c912562dcb58ee3f3648204c817" category="inline-link-rx"></block>和<block ref="25f6eb92bf39f9dbaabe4b65d71fa8c4" category="inline-link-rx"></block>。</block>
+  <block id="ae0aa1a81eb18e69d5fc662eaee0efd5" category="inline-link">Broadcom 技术文档</block>
+  <block id="ea979d9a9cddfcb001c2c7866c21bc62" category="list-text">要将它们移动到非托管数据存储区，请参阅<block ref="94f03a61d7283013b50d8cc8e88c9fd8" category="inline-link-rx"></block>。</block>
+  <block id="04b5525fb0dd70ed32ea9bb7a57dfaf6" category="list-text">转到快照选项卡，然后选择*拍摄快照*按钮。拍摄 VM 的静止快照。有关详细信息，请参阅<block ref="94f03a61d7283013b50d8cc8e88c9fd8" category="inline-link-rx"></block>。</block>
 </blocks>

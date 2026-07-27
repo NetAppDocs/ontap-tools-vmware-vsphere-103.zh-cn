@@ -20,6 +20,7 @@ REST API包括多个资源类别、例如vCenter和聚合。有关详细信息�
 
 
 
+[[how-to-access-the-rest-api]]
 == 如何访问 REST API
 
 您可以通过ONTAP工具负载平衡器IP地址和端口访问适用于VMware vSphere 10 REST API的ONTAP工具。完整的URL包括以下几个部分：
@@ -47,12 +48,14 @@ CAUTION: 以下示例中的IP地址和端口值仅供说明之用。您需要为
 
 
 
+[[http-details]]
 == HTTP详细信息
 
 适用于VMware vSphere 10 REST API的ONTAP工具使用HTTP和相关参数对资源实例和集合执行操作。下面提供了 HTTP 实施的详细信息。
 
 
 
+[[http-methods]]
 === HTTP 方法
 
 下表显示了REST API支持的HTTP方法或动词。
@@ -78,6 +81,7 @@ CAUTION: 以下示例中的IP地址和端口值仅供说明之用。您需要为
 |===
 
 
+[[request-and-response-headers]]
 === 请求和响应标头
 
 下表总结了REST API使用的最重要HTTP标头。
@@ -97,6 +101,7 @@ CAUTION: 以下示例中的IP地址和端口值仅供说明之用。您需要为
 |===
 
 
+[[http-status-codes]]
 === HTTP status codes
 
 下面介绍了REST API使用的HTTP状态代码。
@@ -137,6 +142,7 @@ CAUTION: 以下示例中的IP地址和端口值仅供说明之用。您需要为
 |===
 
 
+[[authentication]]
 == 身份验证
 
 使用访问令牌对客户端进行REST API身份验证。令牌和身份验证过程的相关特征包括：
@@ -151,6 +157,7 @@ CAUTION: 以下示例中的IP地址和端口值仅供说明之用。您需要为
 
 
 
+[[synchronous-and-asynchronous-requests]]
 == 同步和异步请求
 
 大多数REST API调用都会快速完成、因此会同步运行。也就是说、在完成请求后、它们将返回状态代码(例如200)。需要较长时间才能完成的请求会使用后台作业异步运行。

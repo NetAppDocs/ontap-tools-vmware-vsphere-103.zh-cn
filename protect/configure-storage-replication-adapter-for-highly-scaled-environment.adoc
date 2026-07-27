@@ -15,6 +15,7 @@ summary: '您应按照建议的设置配置存储超时时间间隔、以使Stor
 
 
 
+[[storage-provider-settings]]
 == 存储提供程序设置
 
 您应在适用于扩展环境的VMware Live Site Recovery上设置以下超时值：
@@ -58,6 +59,7 @@ summary: '您应按照建议的设置配置存储超时时间间隔、以使Stor
 
 
 
+[[storage-settings]]
 == 存储设置
 
 当您遇到超时时时、请将 `storage.commandTimeout`和的值增加 `storage.maxConcurrentCommandCnt`到更高的值。

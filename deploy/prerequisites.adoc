@@ -17,6 +17,7 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 
 
 
+[[system-requirements]]
 == 系统要求
 
 * *每个节点的安装包空间要求*
@@ -50,6 +51,7 @@ summary: 在部署适用于VMware vSphere的ONTAP工具之前、您应熟悉部�
 |===
 
 
+[[minimum-storage-and-application-requirements]]
 == 最低存储和应用程序要求
 
 |===
@@ -76,6 +78,7 @@ https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src
 
 
 
+[[configuration-limits-to-deploy-ontap-tools-for-vmware-vsphere]]
 == 部署适用于VMware vSphere的ONTAP工具的配置限制
 
 您可以使用下表作为指南来配置适用于VMware vSphere的ONTAP工具。
@@ -102,6 +105,7 @@ https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src
 |===
 
 
+[[ontap-tools-for-vmware-vsphere-storage-replication-adapter-sra]]
 == 适用于VMware vSphere的ONTAP工具—Storage Replication Adapter (SRA)
 
 下表显示了使用适用于VMware vSphere的ONTAP工具时每个VMware Live Site Recovery实例支持的数量。
@@ -144,6 +148,7 @@ https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src
 
 
 
+[[port-requirements]]
 == 端口要求
 
 下表概括了NetApp使用的网络端口及其用途。确保这些端口已打开且可访问、以便在系统中进行正确操作和通信。确保已具备必要的网络配置、以允许这些端口上的流量正常运行关联服务。根据您的安全策略、您可能需要配置防火墙或其他安全设备、以允许网络中的此流量。
